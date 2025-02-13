@@ -17,8 +17,16 @@ const LoginPage = () => {
         </div>
         <div className='w-full flex flex-col justify-center items-center'>
           <div className='w-[100%] flex flex-col justify-center items-center p-2 gap-2'>
-            <h2 className='text-2xl font-bold'>Username</h2>
-            
+            <h2 className='text-2xl font-bold text-black'>Username</h2>
+            <input
+              className='bg-white border-2 border-black rounded-lg'
+            />
+          </div>
+          <div className='w-full flex flex-col justify-center items-center p-2 gap-2'>
+            <h2 className='text-2xl font-bold text-black'>Password</h2>
+            <input
+              className='w-1/2 bg-white border-2 border-black rounded-lg'
+            />
           </div>
         </div>
 
