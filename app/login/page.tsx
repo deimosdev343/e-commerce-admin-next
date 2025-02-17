@@ -1,8 +1,21 @@
 "use client";
 
 import React from 'react'
-
+import { useForm } from 'react-hook-form';
 const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState:{errors}
+  } = useForm();
+
+  const onSubmit = async () => {
+    try {
+     // do govno
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <div className='w-screen h-screen bg-slate-900 flex flex-col justify-center items-center'>
 
@@ -18,15 +31,24 @@ const LoginPage = () => {
         <div className='w-full flex flex-col justify-center items-center'>
           <div className='w-[100%] flex flex-col justify-center items-center p-2 gap-2'>
             <h2 className='text-2xl font-bold text-black'>Username</h2>
-            <input
-              className='w-1/2 bg-white border-2 border-black rounded-lg p-2'
+            <input 
+              className={`w-[50%] bg-white border-2 ${errors?.username?.type ? "border-red-500" : "border-black"} border-black rounded-lg`} 
+              {...register("username", {required: true})}
             />
+            {errors.username?.type === "required" && <h2 className='text-red-500 font-semibold text-lg'>
+              Username Required
+            </h2>}
           </div>
           <div className='w-full flex flex-col justify-center items-center p-2 gap-2'>
             <h2 className='text-2xl font-bold text-black'>Password</h2>
-            <input
-              className='w-1/2 bg-white border-2 border-black rounded-lg p-2'
+            <input 
+              className={`w-[50%] bg-white border-2 ${errors.password?.type ? "border-red-500" : "border-black"} rounded-lg`}
+              {...register("password", {required: true})}
+              type='password'
             />
+            {errors.password?.type === "required" && <h2 className='text-red-500 font-semibold text-lg'>
+              Password Required
+            </h2>}
           </div>
         </div>
 
