@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req: Request, res: NextApiResponse) => {
   try {
-    console.log(req.json())
+    //вот блин как я это забила...
+    console.log(await req.json())
     const backendRes = await axios.post(
       `${process.env.BACKEND_API}/auth`,
       req.json()
