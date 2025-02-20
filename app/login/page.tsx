@@ -1,5 +1,6 @@
 "use client";
 
+import axios from 'axios';
 import React from 'react'
 import { useForm } from 'react-hook-form';
 const LoginPage = () => {
@@ -9,9 +10,11 @@ const LoginPage = () => {
     formState:{errors}
   } = useForm();
 
-  const onSubmit = async () => {
+  const onSubmit = async (data : {}) => {
     try {
-     // do govno
+      const res = await axios.post(`/api/login`,data);
+      // do login stuff 
+      //navigate
     } catch (err) {
       console.log(err);
     }
