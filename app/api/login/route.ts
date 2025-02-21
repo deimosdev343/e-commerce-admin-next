@@ -1,5 +1,6 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: Request, res: NextApiResponse) => {
@@ -10,7 +11,8 @@ export const POST = async (req: Request, res: NextApiResponse) => {
       `${process.env.BACKEND_API}/auth`,
        body
     ); 
-
+      const cks = await cookies();
+      cks.set("token", backendRes.data.token);
     return NextResponse.json(
       backendRes.data,
       {status: 200}

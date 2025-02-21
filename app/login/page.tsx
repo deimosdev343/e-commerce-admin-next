@@ -22,7 +22,8 @@ const LoginPage = () => {
     try {
       console.log(data);
       const res = await axios.post(`/api/login`,data);
-      dispatch(loginUser(res.data.user))
+      dispatch(loginUser(res.data.user));
+
       console.log(res);
       // do login stuff 
       //navigate
