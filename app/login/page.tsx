@@ -3,10 +3,11 @@
 import axios from 'axios';
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { loginUser, useAppDispatch } from '../lib/store';
 const LoginPage = () => {
   const dispatch = useAppDispatch();
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -23,10 +24,7 @@ const LoginPage = () => {
       console.log(data);
       const res = await axios.post(`/api/login`,data);
       dispatch(loginUser(res.data.user));
-
-      console.log(res);
-      // do login stuff 
-      //navigate
+      router.push('/');
     } catch (err) {
       console.log(err);
     }
