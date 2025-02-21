@@ -8,11 +8,18 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState:{errors}
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email:"",
+      password:""
+    }
+  }); 
 
-  const onSubmit = async (data : {}) => {
+  const onSubmit = async (data : {email: string, password: string}) => {
     try {
+      console.log(data);
       const res = await axios.post(`/api/login`,data);
+      console.log(res);
       // do login stuff 
       //navigate
     } catch (err) {
@@ -25,7 +32,7 @@ const LoginPage = () => {
       <form 
         className='w-[50%] p-5 shadow-xl bg-white h-[50%] flex flex-col  
           items-center justify-between rounded-3xl border-slate-600 border-[4px]'
-        onSubmit={() => {}}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div className='w-full flex flex-col justify-center items-center'>
           <h2 className='font-bold text-3xl text-black'>Control Panel Login</h2>
@@ -33,19 +40,19 @@ const LoginPage = () => {
         </div>
         <div className='w-full flex flex-col justify-center items-center'>
           <div className='w-[100%] flex flex-col justify-center items-center p-2 gap-2'>
-            <h2 className='text-2xl font-bold text-black'>Username</h2>
+            <h2 className='text-2xl font-bold text-black'>email</h2>
             <input 
-              className={`w-[50%] bg-white border-2 ${errors?.username?.type ? "border-red-500" : "border-black"} border-black rounded-lg`} 
-              {...register("username", {required: true})}
+              className={`text-black p-2 w-[50%] bg-white border-2 ${errors?.email?.type ? "border-red-500" : "border-black"} border-black rounded-lg`} 
+              {...register("email", {required: true})}
             />
-            {errors.username?.type === "required" && <h2 className='text-red-500 font-semibold text-lg'>
-              Username Required
+            {errors.email?.type === "required" && <h2 className='text-red-500 font-semibold text-lg'>
+              email Required
             </h2>}
           </div>
           <div className='w-full flex flex-col justify-center items-center p-2 gap-2'>
             <h2 className='text-2xl font-bold text-black'>Password</h2>
             <input 
-              className={`w-[50%] bg-white border-2 ${errors.password?.type ? "border-red-500" : "border-black"} rounded-lg`}
+              className={`text-black p-2 w-[50%] bg-white border-2 ${errors.password?.type ? "border-red-500" : "border-black"} rounded-lg`}
               {...register("password", {required: true})}
               type='password'
             />

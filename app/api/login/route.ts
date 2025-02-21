@@ -17,7 +17,7 @@ export const POST = async (req: Request, res: NextApiResponse) => {
     )
   } catch (err) {
     console.log(err);
-    NextResponse.json(
+    return NextResponse.json(
       {msg:"Internal Server Error"}, 
       {status:500}
     );
