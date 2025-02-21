@@ -1,17 +1,19 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
-import { UserData } from "../types/ProductTyoe";
+import { UserData, UserDataPayload } from "../types/AuthTypes";
 
 const initialUserData : UserData = {
   loggedIn: false
 }
 
+
 const userDataSlice = createSlice({
   name:"UserData",
   initialState: initialUserData,
   reducers: {
-    loginUser(state, action: PayloadAction<UserData>) {
-      state = action.payload;
+    loginUser(state, action: PayloadAction<UserDataPayload>) {
+      console.log(`payload: ${action.payload}`);
+      state = {...action.payload, loggedIn: true};
       return state;
     },
     logoutUser(state) {
