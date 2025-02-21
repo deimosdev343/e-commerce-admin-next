@@ -1,14 +1,19 @@
 import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
+import ProdcutIcon from '../assets/box.png'
+import GrowthIcon from '../assets/growth.png'
+import storeManagementLogo from '../assets/management.png';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h2>Test</h2>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-      </footer>
+    <div className="w-full h-screen flex flex-col items-center">
+      <div className="w-full flex flex-col items-center justify-start">
+        <h2 className="text-white font-bold text-5xl uppercase"> Store Management</h2>
+        <Image src={storeManagementLogo} alt="logo" className="w-[8%] m-5"/>
+      </div>
+      <div className="w-[90%] grid grid-cols-2 gap-5 p-5">
+        
+      </div>
     </div>
   );
 }

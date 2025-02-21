@@ -30,7 +30,7 @@ const LoginPage = () => {
     }
   }
   return (
-    <div className='w-screen h-screen bg-slate-900 flex flex-col justify-center items-center'>
+    <div className='w-screen h-screen   flex flex-col justify-center items-center'>
 
       <form 
         className='w-[50%] p-5 shadow-xl bg-white h-[50%] flex flex-col  
