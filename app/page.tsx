@@ -26,7 +26,7 @@ export default async function Home() {
           image={GrowthIcon}
         />
         <LinkBox
-          title={"Categories"}
+          title={"Departments"}
           link={'/category'}
           image={GrowthIcon}
         />

@@ -5,7 +5,9 @@ import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/st
 import { getAuth } from '../services/getAuth';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-
+import Logo from '../../assets/Logo.png';
+import Logout from '../../assets/logout.png';
+import Image from 'next/image';
 
 const TopBar = ({token}: {token: string}) => {
   const dispatch = useAppDispatch();
@@ -27,7 +29,33 @@ const TopBar = ({token}: {token: string}) => {
     } 
   }, [userData])
   return (
-    <div>TopBar</div>
+    <div className='w-full flex items-center justify-between
+      p-2 h-[10%]  bg-slate-700 rounded-b-lg'
+    >
+      <div className='flex justify-start'>
+        <h2 className='font-bold md:text-xl'> Hello, {userData.name}</h2>
+      </div>
+      <div className='hidden  md:flex justify-center items-center'>
+        <h2 className='font-bold'>
+          Management Dashboard
+        </h2>
+        <Image
+          src={Logo}
+          alt="logo"
+          className='w-14'
+        />
+      </div>
+      <button className='flex items-center gap-2 '>
+      <h2>
+        log out
+      </h2>
+      <Image
+          src={Logout}
+          alt="logo"
+          className='w-10'
+        />
+      </button>
+    </div>
   )
 }
 
