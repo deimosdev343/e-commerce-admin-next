@@ -9,13 +9,13 @@ import Logo from '../../assets/Logo.png';
 import Logout from '../../assets/logout.png';
 import Image from 'next/image';
 
-const TopBar = ({token}: {token: string}) => {
+const TopBar = () => {
   const dispatch = useAppDispatch();
   const userData = useAppSelector(state=> state.userData);
   const router = useRouter();
   const fetchAuth = async () => {
     try {
-      const res = await axios.get(`/api/auth`,{headers:{token}});
+      const res = await axios.get(`/api/auth`);
       dispatch(loginUser(res.data.user));
     } catch (err) {
       console.log(err);
@@ -28,6 +28,8 @@ const TopBar = ({token}: {token: string}) => {
       fetchAuth();
     } 
   }, [userData])
+
+
   return (
     <div className='w-full flex items-center justify-between
       p-2 h-[10%]  bg-slate-700 rounded-b-lg'
