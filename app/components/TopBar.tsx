@@ -23,6 +23,17 @@ const TopBar = () => {
       router.push('/login');
     }
   }
+
+  const logoutCall = async () => {
+    try {
+      await axios.get(`/api/logout`);
+    } catch (err) {
+      console.log(err)
+    } finally {
+      dispatch(logoutUser());
+      router.push('/login');
+    }
+  }
   useEffect(() => {
     if(!userData.loggedIn) {
       fetchAuth();
@@ -47,7 +58,7 @@ const TopBar = () => {
           className='w-14'
         />
       </div>
-      <button className='flex items-center gap-2 '>
+      <button className='flex items-center gap-2' onClick={logoutCall}>
       <h2>
         log out
       </h2>
