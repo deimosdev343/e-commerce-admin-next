@@ -3,6 +3,10 @@ import React, { useEffect } from 'react'
 import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
+import Logout from '../../assets/logout.png';
+import MainDashboardIcon from '../../assets/dashboards.png';
+import Link from 'next/link';
 
 const SideBar = () => {
     const dispatch = useAppDispatch();
@@ -44,6 +48,29 @@ const SideBar = () => {
           Management
         </h2>
       </div>
+      <div className='w-full flex flex-col items-start p-8 gap-5'>
+        <Link className='flex items-center gap-2' href={'/'}>
+          <Image
+            src={MainDashboardIcon}
+            alt="logo"
+            className='w-8'
+          />
+          <h2 className='font-bold'>
+            Dashboard
+          </h2>
+        </Link>
+        <button className='flex items-center gap-2' onClick={logoutCall}>
+          <Image
+            src={Logout}
+            alt="logo"
+            className='w-8'
+          />
+          <h2 className='font-bold'>
+            logout
+          </h2>
+        </button>
+      </div>
+      
     </div>
   )
 }
