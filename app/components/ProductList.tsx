@@ -2,16 +2,26 @@
 
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { ProductType } from '../types/ProductType'
 
 const ProductList = () => {
+  const [productParams, setProductParams] = useState({
+    limit:10,
+    category: null,
+    sortBy: "CreatedAtDesc",
+    name:""
+  })
   const fetchData = async () => {
     try {
-      await axios.get('/api/products', {
+      const data = (await axios.get('/api/products', {
         params:{
-          "govno":"govno",
-          "govno2":"govno2"
+          limit: productParams.limit,
+          category: productParams.category,
+          sortBy: productParams.sortBy,
+          name: productParams.name
         }
-      });
+      })).data;
+      setProducts(data);
     } catch (err) {
       console.log(err)
     }
@@ -19,7 +29,7 @@ const ProductList = () => {
   useEffect(() => {
    fetchData(); 
   }, [])
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Array<ProductType>>([]);
   return (
     <div>ProductList</div>
   )
