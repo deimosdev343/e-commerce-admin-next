@@ -32,7 +32,7 @@ const ProductList = () => {
   }, [])
   const [products, setProducts] = useState<Array<ProductType>>([]);
   return (
-    <div className='w-full flex flex-col items-center gap-2 p-2'>
+    <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
      {products.map(prd => <ProductBox key={prd._id} product={prd}/>)} 
     </div>
   )

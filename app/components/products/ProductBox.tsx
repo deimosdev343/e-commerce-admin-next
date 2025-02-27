@@ -15,10 +15,13 @@ const ProductBox = ({product} : {product: ProductType}) => {
           alt='product image'
           src={fallback ? PictureLogo : product.image }
           onError={(err) => {setFallback(true)}}
-          width={60}
-          height={60}
+          width={360}
+          height={360}
+          className='border-gray-300 border-4 rounded-md'
         />
-    
+        <h2 className='text-white font-bold text-lg'>
+          ID: {product._id}
+        </h2> 
       </div>
     </div>
   )
