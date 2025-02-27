@@ -3,6 +3,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ProductType } from '../types/ProductType'
+import ProductBox from './products/ProductBox'
 
 const ProductList = () => {
   const [productParams, setProductParams] = useState({
@@ -31,7 +32,9 @@ const ProductList = () => {
   }, [])
   const [products, setProducts] = useState<Array<ProductType>>([]);
   return (
-    <div>ProductList</div>
+    <div className='w-full flex flex-col items-center gap-2 p-2'>
+     {products.map(prd => <ProductBox key={prd._id} product={prd}/>)} 
+    </div>
   )
 }
 
