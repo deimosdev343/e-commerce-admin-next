@@ -27,6 +27,9 @@ const ProductBox = ({product} : {product: ProductType}) => {
         <h2 className='text-white font-bold text-2xl'>
           {product.name}
         </h2>
+        <h2 className='text-white font-bold text-xl italic'>
+          {product.description.length > 20 ? product.description.substring(0, 40) + "..." : product.description }
+        </h2>
         <div className='flex w-full items-center gap-5'>
           <h2 className='text-white font-bold text-2xl'>
             Colors: [
