@@ -8,7 +8,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     const searchParams = req.nextUrl.searchParams;
     const cks = await cookies();
     const token =  cks.get("token")?.value;
-    const productsData = await axios(
+    const productsData = await axios.get(
       `${process.env.BACKEND_API}/products`,
       {
         params:{
@@ -30,4 +30,37 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       {status:500}
     );
   }
+}
+
+export const DELETE = async (req: NextRequest, res: NextResponse) => {
+
+  try {
+    const searchParams = req.nextUrl.searchParams;
+    const cks = await cookies();
+    const token =  cks.get("token")?.value;
+
+    const id = searchParams.get("id"); 
+    await axios.delete(
+      `${process.env.BACKEND_API}/products`,
+      {
+        params:{
+          id
+        },
+        headers:{
+          Authorization:`bearer ${token}`          
+        }
+      } 
+    );
+    return NextResponse.json(
+      {msg:"Item removed successfully"},
+      {status:200}
+    );  
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json(
+      {msg:"Internal Server Error"}, 
+      {status:500}
+    ); 
+  }
+  
 }
