@@ -39,6 +39,23 @@ const TopBarProductList = (
           Search
         </button>
       </div>
+      <div className='w-full flex p-2'>
+        <select
+          name="sort"
+          id=""
+          className="py-2 px-4 rounded-2xl text-lg  bg-white ring-1 ring-gray-400 text-black font-bold w-[30%]" 
+          onClick={(e) => {
+            const value = (e.target as HTMLInputElement).value
+            setParams((prms: ParamsObj) => ({...prms, sortBy:value}))
+          }}
+        >
+          <option>Sort By</option>
+          <option value="priceAsc">Price (low to high)</option>
+          <option value="priceDesc">Price (high to low)</option>
+          <option value="createdAtDesc">Newest</option>
+          <option value="createdAtAsc">Oldest</option>
+        </select>
+      </div>
     </div> 
   )
 }
