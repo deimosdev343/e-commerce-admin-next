@@ -11,7 +11,7 @@ const ProductList = () => {
     limit:10,
     category: null,
     sortBy: "CreatedAtDesc",
-    name:""
+    name:"shirt"
   })
   const fetchData = async () => {
     try {
@@ -30,7 +30,8 @@ const ProductList = () => {
   }
   useEffect(() => {
    fetchData(); 
-  }, [])
+  }, [productParams]);
+  
   const [products, setProducts] = useState<Array<ProductType>>([]);
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
