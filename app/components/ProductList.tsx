@@ -4,6 +4,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ProductType } from '../types/ProductType'
 import ProductBox from './products/ProductBox'
+import TopBarProductList from './products/TopBarProductList'
 
 const ProductList = () => {
   const [productParams, setProductParams] = useState({
@@ -33,6 +34,7 @@ const ProductList = () => {
   const [products, setProducts] = useState<Array<ProductType>>([]);
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
+      <TopBarProductList params={productParams} setParams={setProductParams} />
      {products.map(prd => <ProductBox key={prd._id} product={prd}/>)} 
     </div>
   )
