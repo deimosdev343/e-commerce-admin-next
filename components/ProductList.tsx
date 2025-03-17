@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ProductType } from '../types/ProductType'
+import { ProductType } from '../app/types/ProductType'
 import ProductBox from './products/ProductBox'
 import TopBarProductList from './products/TopBarProductList'
 
@@ -11,7 +11,7 @@ const ProductList = () => {
     limit:10,
     category: null,
     sortBy: "CreatedAtDesc",
-    name:"shirt"
+    name:""
   })
   const fetchData = async () => {
     try {

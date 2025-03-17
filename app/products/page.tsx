@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import ProductList from '../components/ProductList'
+import ProductList from '../../components/ProductList'
 
 const page = () => {
   return (

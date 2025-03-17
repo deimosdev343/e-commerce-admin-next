@@ -4,7 +4,7 @@
 
 import { ProductType } from '@/app/types/ProductType'
 import React, { useState } from 'react'
-import PictureLogo from '../../../assets/ImageLogo.png'
+import PictureLogo from '../../assets/ImageLogo.png'
 import Image from 'next/image'
 const ProductBox = ({product} : {product: ProductType}) => {
   const [fallback, setFallback] = useState<boolean>(false);

@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect } from 'react'
-import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store';
+import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../app/lib/store';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
-import Logout from '../../assets/logout.png';
-import MainDashboardIcon from '../../assets/dashboards.png';
+import Logout from '../assets/logout.png';
+import MainDashboardIcon from '../assets/dashboards.png';
 import Link from 'next/link';
 
 const SideBar = () => {

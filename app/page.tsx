@@ -3,9 +3,9 @@ import Image from "next/image";
 import ProdcutIcon from '../assets/box.png'
 import GrowthIcon from '../assets/growth.png'
 import storeManagementLogo from '../assets/management.png';
-import LinkBox from "./components/LinkBox";
+import LinkBox from "../components/LinkBox";
 import { cookies } from "next/headers";
-import TopBar from "./components/TopBar";
+import TopBar from "../components/TopBar";
 
 export default async function Home() {
 

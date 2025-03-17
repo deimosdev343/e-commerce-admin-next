@@ -1,12 +1,12 @@
 "use client"
 
 import React, { useEffect } from 'react'
-import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store'
-import { getAuth } from '../services/getAuth';
+import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../app/lib/store'
+import { getAuth } from '../app/services/getAuth';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import Logo from '../../assets/Logo.png';
-import Logout from '../../assets/logout.png';
+import Logo from '../assets/Logo.png';
+import Logout from '../assets/logout.png';
 import Image from 'next/image';
 
 const TopBar = () => {
