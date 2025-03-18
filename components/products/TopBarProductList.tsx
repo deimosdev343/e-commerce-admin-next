@@ -28,12 +28,12 @@ const TopBarProductList = (
       </div>
       <div className='w-full flex items-center p-2 gap-2 '>
         <input
-          className='rounded-md bg-white w-[80%] p-2 text-black'
+          className='rounded-md bg-white w-[80%] p-3 text-black'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button 
-          className='rounded-md bg-blue-400 text-white font-bold w-[18%] p-2'
+          className='rounded-md bg-slate-900 text-white font-bold w-[18%] p-2 border-2 text-2xl'
           onClick={() => setParams((prms: ParamsObj) => ({...prms, name: searchTerm}))}
         >
           Search
