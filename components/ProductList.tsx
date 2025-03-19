@@ -12,7 +12,12 @@ const ProductList = () => {
     category: null,
     sortBy: "CreatedAtDesc",
     name:""
-  })
+  });
+  const [productEditModal, setProductEditmodal] = useState<{show: Boolean, product: ProductType | null}>({
+    show: false,
+    product: null
+  });
+  
   const fetchData = async () => {
     try {
       const data = (await axios.get('/api/products', {
