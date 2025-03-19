@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { ProductType } from '../app/types/ProductType'
 import ProductBox from './products/ProductBox'
 import TopBarProductList from './products/TopBarProductList'
+import EditProduct from './products/modals/EditProduct'
 
 const ProductList = () => {
   const [productParams, setProductParams] = useState({
@@ -40,8 +41,9 @@ const ProductList = () => {
   const [products, setProducts] = useState<Array<ProductType>>([]);
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
+      <EditProduct modalState={productEditModal} setModalState={setProductEditmodal}/>
       <TopBarProductList params={productParams} setParams={setProductParams} />
-     {products.map(prd => <ProductBox key={prd._id} product={prd}/>)} 
+      {products.map(prd => <ProductBox key={prd._id} product={prd} setEditModal={setProductEditmodal}/>)} 
     </div>
   )
 }
