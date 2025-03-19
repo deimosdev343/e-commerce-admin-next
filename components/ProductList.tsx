@@ -13,7 +13,7 @@ const ProductList = () => {
     sortBy: "CreatedAtDesc",
     name:""
   });
-  const [productEditModal, setProductEditmodal] = useState<{show: Boolean, product: ProductType | null}>({
+  const [productEditModal, setProductEditmodal] = useState<{show: boolean | undefined, product: ProductType | null}>({
     show: false,
     product: null
   });
