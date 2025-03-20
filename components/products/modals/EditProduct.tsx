@@ -24,12 +24,28 @@ const EditProduct = ({modalState, setModalState} :{
       </p>
      </Modal.Header>
      <Modal.Body className='bg-gray-600  shadow-xl'>
-     <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+      <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+        <h2 className='font-bold text-2xl'>
+          Item Name
+        </h2>
         <TextInput 
-          className="w-full" 
+          className="w-full font-semibold"
+          value={modalState.product?.name} 
           onChange={(e) => setModalState((
             mdlstate: {show: boolean | undefined, product: ProductType | null} ) => (
               {...mdlstate, product: {...mdlstate.product, name: e.target.value}}))}
+        />
+      </div>
+      <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+        <h2 className='font-bold text-2xl'>
+          Price
+        </h2>
+        <TextInput 
+          className="w-full font-semibold"
+          value={modalState.product?.price} 
+          onChange={(e) => setModalState((
+            mdlstate: {show: boolean | undefined, product: ProductType | null} ) => (
+              {...mdlstate, product: {...mdlstate.product, price: e.target.value}}))}
         />
       </div>
      </Modal.Body>
