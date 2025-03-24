@@ -1,12 +1,19 @@
+"use client";
+
 import { ProductType } from '@/app/types/ProductType'
 import { Modal, TextInput } from 'flowbite-react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const EditProduct = ({modalState, setModalState} :{
   modalState: {show: boolean | undefined, product: ProductType | null}
   setModalState: Function
 }) => {
 
+  const [categories, setCategories]  = useState([]);
+
+  useEffect(() => {
+    
+  }, [])
   return (
     <Modal 
       show={modalState.show}
