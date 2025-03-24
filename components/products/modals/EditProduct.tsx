@@ -1,6 +1,7 @@
 "use client";
 
 import { ProductType } from '@/app/types/ProductType'
+import axios from 'axios';
 import { Modal, TextInput } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
 
@@ -11,8 +12,13 @@ const EditProduct = ({modalState, setModalState} :{
 
   const [categories, setCategories]  = useState([]);
 
+  const fetchData = async () => {
+    const data = (await axios.get('/api/category')).data;
+    setCategories(data);
+  }
+
   useEffect(() => {
-    
+    fetchData();
   }, [])
   return (
     <Modal 
