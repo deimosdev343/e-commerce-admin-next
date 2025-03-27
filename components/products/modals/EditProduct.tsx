@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductType } from '@/types/ProductType'
+import { categoryType, ProductType } from '@/types/ProductType'
 import axios from 'axios';
 import { Modal, TextInput } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
@@ -10,7 +10,7 @@ const EditProduct = ({modalState, setModalState} :{
   setModalState: Function
 }) => {
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<Array<categoryType>>([]);
 
   const fetchData = async () => {
     const data = (await axios.get('/api/category')).data;
@@ -62,16 +62,22 @@ const EditProduct = ({modalState, setModalState} :{
               {...mdlstate, product: {...mdlstate.product, price: e.target.value}}))}
         />
       </div>
-      <select
-        name="sort"
-        id=""
-        className="py-2 px-4 rounded-2xl text-lg  bg-white ring-1 ring-gray-400 text-black font-bold w-[30%]" 
-        onClick={(e) => {
-        }}
-      >
-        <option>Sort By</option>
-        {/* {categories.map((cat: {}) => <option value={cat.name}>{cat}</option>)} */}
-      </select>
+      <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+        <h2 className='font-bold text-2xl'>
+          Category
+        </h2>
+        <select
+          name="sort"
+          id=""
+          className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full" 
+          onChange={(e) => setModalState((
+            mdlstate: {show: boolean | undefined, product: ProductType | null} ) => (
+              {...mdlstate, product: {...mdlstate.product, category: e.target.value}}))}
+        >
+          <option>Sort By</option>
+          {categories.map((cat: categoryType) => <option value={cat.name}>{cat.name}</option>)}
+        </select>
+      </div>
      </Modal.Body>
     </Modal>
   )
