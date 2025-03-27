@@ -1,6 +1,6 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
-import { UserData, UserDataPayload } from "../types/AuthTypes";
+import { UserData, UserDataPayload } from "../../types/AuthTypes";
 
 const initialUserData : UserData = {
   loggedIn: false

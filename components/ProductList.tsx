@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ProductType } from '../app/types/ProductType'
+import { ProductType } from '../types/ProductType'
 import ProductBox from './products/ProductBox'
 import TopBarProductList from './products/TopBarProductList'
 import EditProduct from './products/modals/EditProduct'

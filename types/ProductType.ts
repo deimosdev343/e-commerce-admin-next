@@ -11,3 +11,9 @@ export interface ProductType {
   sizes: Array<string>
   updatedAt: string
 }
+
+export interface categoryType {
+  _id: string;
+  name: string;
+  image: string;
+}

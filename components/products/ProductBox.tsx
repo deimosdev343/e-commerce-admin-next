@@ -2,7 +2,7 @@
 
 //only way to have a fallback image is to use useState... :\ вот хуйна 
 
-import { ProductType } from '@/app/types/ProductType'
+import { ProductType } from '@/types/ProductType'
 import React, { useState } from 'react'
 import PictureLogo from '../../assets/ImageLogo.png'
 import Image from 'next/image'
