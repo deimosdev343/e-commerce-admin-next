@@ -12,6 +12,10 @@ export interface ProductType {
   updatedAt: string
 }
 
+export interface ProductStateType {
+  product: ProductType,
+  showModal: Boolean
+}
 export interface categoryType {
   _id: string;
   name: string;

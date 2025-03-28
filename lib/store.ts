@@ -1,10 +1,11 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
-import { UserData, UserDataPayload } from "../../types/AuthTypes";
+import { UserData, UserDataPayload } from "../types/AuthTypes";
 
 const initialUserData : UserData = {
   loggedIn: false
 }
+
 
 
 const userDataSlice = createSlice({
@@ -24,6 +25,12 @@ const userDataSlice = createSlice({
     }
   }
 });
+
+const productModalSlice = createSlice({
+  name:"productSlice",
+  initialState: {},
+  reducers: {}
+})
 
 export const makeStore = () => {
   return configureStore({

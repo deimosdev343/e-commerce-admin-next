@@ -32,7 +32,12 @@ const EditProduct = ({modalState, setModalState} :{
   const [ColorPicker, setColorPicker] = useState({
     show:false,
     color:""
-  })
+  });
+  
+  const onAddColor = async () => {
+    
+  }
+
   const fetchData = async () => {
     const data = (await axios.get('/api/category')).data;
     setCategories(data);

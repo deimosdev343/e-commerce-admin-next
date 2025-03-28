@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect } from 'react'
-import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../app/lib/store'
+import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store'
 import { getAuth } from '../app/services/getAuth';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
