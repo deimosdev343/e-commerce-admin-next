@@ -55,7 +55,7 @@ const SideBar = () => {
             alt="logo"
             className='w-8'
           />
-          <h2 className='font-bold'>
+          <h2 className='font-bold text-white'>
             Dashboard
           </h2>
         </Link>
@@ -65,7 +65,7 @@ const SideBar = () => {
             alt="logo"
             className='w-8'
           />
-          <h2 className='font-bold'>
+          <h2 className='font-bold text-white'>
             logout
           </h2>
         </button>

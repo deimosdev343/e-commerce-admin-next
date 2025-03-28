@@ -2,8 +2,8 @@
 
 import { categoryType, ProductType } from '@/types/ProductType'
 import axios from 'axios';
-import { Modal, TextInput } from 'flowbite-react'
-import React, { useEffect, useState } from 'react'
+import { Modal, TextInput } from 'flowbite-react';
+import React, { useEffect, useState } from 'react';
 import ProductColor from '../ProductColor';
 
 const ColorPickerColors = [
@@ -29,7 +29,10 @@ const EditProduct = ({modalState, setModalState} :{
 }) => {
 
   const [categories, setCategories] = useState<Array<categoryType>>([]);
-
+  const [ColorPicker, setColorPicker] = useState({
+    show:false,
+    color:""
+  })
   const fetchData = async () => {
     const data = (await axios.get('/api/category')).data;
     setCategories(data);
