@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Modal, TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import ProductColor from '../ProductColor';
+import AddIcon from '../../../assets/add.png';
+import Image from 'next/image';
 
 const ColorPickerColors = [
   "#fcba03",
@@ -23,8 +25,12 @@ const ColorPickerColors = [
   "#6cb04f"
 ]
 
+interface modalStateType {
+  show: boolean | undefined,
+  product: ProductType | null
+}
 const EditProduct = ({modalState, setModalState} :{
-  modalState: {show: boolean | undefined, product: ProductType | null}
+  modalState: modalStateType
   setModalState: Function
 }) => {
 
@@ -32,10 +38,27 @@ const EditProduct = ({modalState, setModalState} :{
   const [ColorPicker, setColorPicker] = useState({
     show:false,
     color:""
-  });
+  }); 
   
+  const onRemoveColor = async (color: string) => {
+    setModalState((mdlState : modalStateType) => {
+      const newProd = {...mdlState.product};
+      newProd.colors = mdlState.product?.colors.filter(clr => clr != color);
+      return {...mdlState, product: newProd};
+    });
+  }
+
   const onAddColor = async () => {
-    
+    if(ColorPicker.color) {
+      setModalState((mdlState: modalStateType) =>  {
+        const prod = mdlState.product;
+        if(prod?.colors.findIndex(col => col === ColorPicker.color) == -1) {
+          prod.colors = [...prod.colors, ColorPicker.color];
+        }
+        return {...mdlState,product: prod };
+      })
+    }
+    setColorPicker({show:false, color:""});
   }
 
   const fetchData = async () => {
@@ -72,7 +95,7 @@ const EditProduct = ({modalState, setModalState} :{
           className="w-full font-semibold"
           value={modalState.product?.name} 
           onChange={(e) => setModalState((
-            mdlstate: {show: boolean | undefined, product: ProductType | null} ) => (
+            mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, name: e.target.value}}))}
         />
       </div>
@@ -84,7 +107,7 @@ const EditProduct = ({modalState, setModalState} :{
           className="w-full font-semibold"
           value={modalState.product?.price} 
           onChange={(e) => setModalState((
-            mdlstate: {show: boolean | undefined, product: ProductType | null} ) => (
+            mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, price: e.target.value}}))}
         />
       </div>
@@ -97,20 +120,27 @@ const EditProduct = ({modalState, setModalState} :{
           id=""
           className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full" 
           onChange={(e) => setModalState((
-            mdlstate: {show: boolean | undefined, product: ProductType | null} ) => (
+            mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, category: e.target.value}}))}
         >
           <option>Sort By</option>
-          {categories.map((cat: categoryType) => <option value={cat.name}>{cat.name}</option>)}
+          {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
       </div>
       <div className='flex flex-col p-4 '>
         <h2 className='font-bold text-2xl'>
           Colors
         </h2>
+        <div className="w-[15%] mt-2 flex flex-row">
+          <Image 
+            src={AddIcon}
+            alt="add color"
+            className="w-8 cursor-pointer"
+            onClick={() => setColorPicker(colorP => ({...colorP, show: !colorP.show}))}
+          />
+        </div>
         <div className="w-[89%] p-4 flex flex-row justify-start items-center gap-5 overflow-x-scroll">
-          
-          {modalState.product?.colors.map(clr => <ProductColor color={clr} onRemoveColor={() => { }}/>)}
+          {modalState.product?.colors.map(clr => <ProductColor key={clr} color={clr} onRemoveColor={() => { }}/>)}
         </div>
       </div>
      </Modal.Body>
