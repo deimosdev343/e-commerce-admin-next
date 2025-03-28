@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import ProductColor from '../ProductColor';
 import AddIcon from '../../../assets/add.png';
 import Image from 'next/image';
-
+import {CirclePicker} from 'react-color';
 const ColorPickerColors = [
   "#fcba03",
   "#fce303",
@@ -35,7 +35,7 @@ const EditProduct = ({modalState, setModalState} :{
 }) => {
 
   const [categories, setCategories] = useState<Array<categoryType>>([]);
-  const [ColorPicker, setColorPicker] = useState({
+  const [colorPicker, setColorPicker] = useState({
     show:false,
     color:""
   }); 
@@ -49,11 +49,11 @@ const EditProduct = ({modalState, setModalState} :{
   }
 
   const onAddColor = async () => {
-    if(ColorPicker.color) {
+    if(colorPicker.color) {
       setModalState((mdlState: modalStateType) =>  {
         const prod = mdlState.product;
-        if(prod?.colors.findIndex(col => col === ColorPicker.color) == -1) {
-          prod.colors = [...prod.colors, ColorPicker.color];
+        if(prod?.colors.findIndex(col => col === colorPicker.color) == -1) {
+          prod.colors = [...prod.colors, colorPicker.color];
         }
         return {...mdlState,product: prod };
       })
@@ -135,13 +135,29 @@ const EditProduct = ({modalState, setModalState} :{
           <Image 
             src={AddIcon}
             alt="add color"
-            className="w-8 cursor-pointer"
+            className="w-7 cursor-pointer"
             onClick={() => setColorPicker(colorP => ({...colorP, show: !colorP.show}))}
           />
         </div>
-        <div className="w-[89%] p-4 flex flex-row justify-start items-center gap-5 overflow-x-scroll">
-          {modalState.product?.colors.map(clr => <ProductColor key={clr} color={clr} onRemoveColor={() => { }}/>)}
+        <div className="w-auto p-4 grid grid-cols-4 justify-start items-center gap-5 overflow-x-scroll">
+          {modalState.product?.colors.map(clr => <ProductColor key={clr} color={clr} onRemoveColor={onRemoveColor}/>)}
         </div>
+        {colorPicker.show && 
+          <div className="w-full flex flex-row justify-between
+            items-center gap-5 p-5  bg-slate-800 rounded-xl"
+          >
+            <CirclePicker  
+              colors={ColorPickerColors}  
+              onChange={(color) => {setColorPicker(colorP => ({...colorP, color: color.hex}))}}
+            />
+            <button
+              onClick={onAddColor} 
+              className="p-2 bg-slate-700 text-white rounded-lg shadow-lg hover:bg-slate-600 transition-all"
+            >
+              Add Color
+            </button> 
+          </div>
+        }
       </div>
      </Modal.Body>
     </Modal>
