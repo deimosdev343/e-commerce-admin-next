@@ -30,17 +30,21 @@ const ProductBox = ({product, setEditModal} : {product: ProductType, setEditModa
         <h2 className='text-white font-bold text-xl italic'>
           {product.description.length > 40 ? product.description.substring(0, 40) + "..." : product.description }
         </h2>
-        <div className='flex w-full items-center gap-5'>
-          <h2 className='text-white font-bold text-2xl'>
-            Colors: [
+        <div className='flex flex-col w-full items-start gap-5 '>
+          <h2 className='text-white font-bold text-3xl'>
+            Colors 
           </h2>
-          {product.colors.map(clr => <div
-            key={clr}
-            className='flex flex-row p-3 rounded-xl shadow-lg'
-            style={{backgroundColor:clr}}
-          > 
-          </div>)}
-          <h2 className='text-white font-extrabold text-2xl'>]</h2>
+          
+          <div className='grid grid-cols-5 gap-5  items-center bg-gray-900 p-2 rounded-md border-2 border-white '>
+            {product.colors.map(clr => <div
+              key={clr}
+              className='flex flex-row p-3 rounded-xl shadow-lg'
+              style={{backgroundColor:clr}}
+            > 
+            </div>)}
+          </div>
+
+          
         </div>
         <div className='w-full flex items-center gap-2'>     
           <h2 className='text-white font-extrabold text-2xl'> sizes: [</h2>
