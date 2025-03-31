@@ -60,6 +60,23 @@ const EditProduct = ({modalState, setModalState} :{
     }
     setColorPicker({show:false, color:""});
   }
+  const onAddRemoveSize = (size: string) => {
+    setModalState( (mdlstate: modalStateType) => {
+      const newProd = {...mdlstate.product};
+      if(!newProd.sizes) {
+        newProd.sizes = [size];
+      }
+      else if(newProd.sizes.findIndex(sz => sz == size) == -1) {
+        newProd.sizes = [...newProd.sizes, size]
+
+      }
+      else {
+        newProd.sizes = newProd.sizes.filter(sz => sz !== size)
+      }
+
+      return {...mdlstate, product: newProd};
+    })
+  }
 
   const fetchData = async () => {
     const data = (await axios.get('/api/category')).data;
