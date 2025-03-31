@@ -25,6 +25,16 @@ const ColorPickerColors = [
   "#6cb04f"
 ]
 
+const sizes = [
+  "XS",
+  "S",
+  "M",
+  "L",
+  "XL",
+  "XXL",
+  "XXXL"
+]
+
 interface modalStateType {
   show: boolean | undefined,
   product: ProductType | null
@@ -175,6 +185,16 @@ const EditProduct = ({modalState, setModalState} :{
             </button> 
           </div>
         }
+        <div className="w-full flex flex-col justify-start items-center gap-2 p-2 border-slate-500 border-2 rounded-xl">
+          <h2 className="text-white text-2xl font-bold">Sizes</h2>
+          <div className="grid grid-cols-6 w-full items-center">
+            {sizes.map( size => <div key={size} className="flex p-2 justify-center items-center gap-2">
+              <h2 className="text-white font-bold">{size}</h2>
+              <input type="checkbox" className="" checked={modalState.product?.sizes.includes(size)} onChange={() => onAddRemoveSize(size)}/>
+            </div>)}
+          </div>
+        </div>
+
       </div>
      </Modal.Body>
     </Modal>
