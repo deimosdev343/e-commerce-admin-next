@@ -51,6 +51,24 @@ const EditProduct = ({modalState, setModalState} :{
     color:""
   }); 
   
+  const submitProduct = async () => {
+    try {
+      const productToSend = {
+        id:modalState.product?._id,
+        name:modalState.product?.name,
+        image: modalState.product?.image,
+        price: modalState.product?.price,
+        category: modalState.product?.category,
+        colors: modalState.product?.colors,
+        sizes: modalState.product?.sizes
+      }
+      if(modalState.type === "Edit") {
+        await axios.put(`/api/product`, productToSend)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
   const onRemoveColor = async (color: string) => {
     setModalState((mdlState : modalStateType) => {
       const newProd = {...mdlState.product};
