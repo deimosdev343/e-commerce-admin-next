@@ -37,7 +37,8 @@ const sizes = [
 
 interface modalStateType {
   show: boolean | undefined,
-  product: ProductType | null
+  product: ProductType | null,
+  type: "Edit" | "Create" 
 }
 const EditProduct = ({modalState, setModalState} :{
   modalState: modalStateType

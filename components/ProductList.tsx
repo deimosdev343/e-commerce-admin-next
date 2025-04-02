@@ -14,9 +14,10 @@ const ProductList = () => {
     sortBy: "CreatedAtDesc",
     name:""
   });
-  const [productEditModal, setProductEditmodal] = useState<{show: boolean | undefined, product: ProductType | null}>({
+  const [productEditModal, setProductEditmodal] = useState<{show: boolean | undefined, product: ProductType | null, type: "Edit" | "Create" }>({
     show: false,
-    product: null
+    product: null,
+    type:"Create"
   });
   
   const fetchData = async () => {
