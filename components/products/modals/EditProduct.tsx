@@ -130,7 +130,7 @@ const EditProduct = ({modalState, setModalState} :{
       }}
     >
      <Modal.Header
-      className='bg-gray-600 border-b-0 shadow-xl'
+      className='bg-gray-600 border-b-0 shadow-xl'  
 
      >
       <p className='text-3xl font-bold text-white '>
