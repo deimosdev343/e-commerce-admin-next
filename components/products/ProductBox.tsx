@@ -58,7 +58,7 @@ const ProductBox = ({product, setEditModal} : {product: ProductType, setEditModa
           className='w-[60%] border-white bg-slate-900 border-2 p-2 rounded-lg
             font-bold text-2xl shadow-lg hover:bg-slate-800'
           onClick={() => {
-            setEditModal({show:true, product: {...product}})
+            setEditModal({show:true, product: {...product}, type: "Edit"})
           }}
         >
           Edit Item

@@ -65,6 +65,8 @@ const EditProduct = ({modalState, setModalState} :{
       if(modalState.type === "Edit") {
         await axios.put(`/api/product`, productToSend)
       }
+
+      setModalState((mdlState: modalStateType) => ({...mdlState, show:false}))
     } catch (err) {
       console.log(err)
     }
@@ -121,7 +123,7 @@ const EditProduct = ({modalState, setModalState} :{
       show={modalState.show}
       className='bg-black'
       onClose={() => {
-        setModalState({show: false, product: null});
+        setModalState((mdlstate: ProductType) =>  ({...mdlstate, show: false}));
       }}
     >
      <Modal.Header
@@ -213,7 +215,16 @@ const EditProduct = ({modalState, setModalState} :{
             </div>)}
           </div>
         </div>
-
+        <div className='w-full flex flex-col items-center'>
+          <button
+            className='p-2 text-white font-bold 
+              bg-slate-800 rounded-lg m-2 hover:bg-slate-700 transition-all
+              border-white border-2'
+            onClick={() => submitProduct()}
+          >
+            Save
+          </button>
+        </div>
       </div>
      </Modal.Body>
     </Modal>
