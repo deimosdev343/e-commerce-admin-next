@@ -36,8 +36,10 @@ const ProductList = () => {
     }
   }
   useEffect(() => {
-   fetchData(); 
-  }, [productParams]);
+    if(!productEditModal.show) {
+      fetchData(); 
+    }
+  }, [productParams,productEditModal]);
 
   const [products, setProducts] = useState<Array<ProductType>>([]);
   return (
