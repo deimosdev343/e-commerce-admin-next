@@ -57,13 +57,16 @@ const EditProduct = ({modalState, setModalState} :{
         id:modalState.product?._id,
         name:modalState.product?.name,
         image: modalState.product?.image,
-        price: modalState.product?.price,
+        description:modalState.product?.description,
+        price: Number(modalState.product?.price),
         category: modalState.product?.category,
         colors: modalState.product?.colors,
-        sizes: modalState.product?.sizes
+        sizes: modalState.product?.sizes,
+        extraImages: modalState.product?.extraImages
+
       }
       if(modalState.type === "Edit") {
-        await axios.put(`/api/product`, productToSend)
+        await axios.put(`/api/products`, {product:productToSend})
       }
 
       setModalState((mdlState: modalStateType) => ({...mdlState, show:false}))

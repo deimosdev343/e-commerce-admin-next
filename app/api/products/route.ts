@@ -37,6 +37,7 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
     const {product} = await req.json();
     const cks = await cookies();
     const token =  cks.get("token")?.value;
+    console.log(product)
     const productsData = await axios.put(
       `${process.env.BACKEND_API}/products`,
       product,
