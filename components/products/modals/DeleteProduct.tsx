@@ -28,7 +28,9 @@ const DeleteProduct = (
         </p>
       </Modal.Header>
       <Modal.Body className='bg-gray-600  shadow-xl'>
-        
+        <div className="w-full flex items-center flex-col">
+
+        </div>
       </Modal.Body>
     </Modal>
   )
