@@ -37,6 +37,9 @@ const DeleteProduct = (
             </button>
             <button
               className=" bg-slate-800 rounded-lg p-2"
+              onClick={() => {
+                setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
+              }}
             >
               No
             </button>

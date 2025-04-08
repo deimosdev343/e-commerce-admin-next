@@ -14,11 +14,28 @@ const ProductList = () => {
     sortBy: "CreatedAtDesc",
     name:""
   });
-  const [productEditModal, setProductEditmodal] = useState<{show: boolean | undefined, product: ProductType | null, type: "Edit" | "Create" }>({
+
+  const [productEditModal, setProductEditmodal] = useState<{
+    show: boolean | undefined, 
+    product: ProductType | null, 
+    type: "Edit" | "Create" }
+  >
+  ({
     show: false,
     product: null,
     type:"Create"
   });
+
+  const [productDeleteModal, setProductDeleteModal] = useState<{
+    show: boolean | undefined,
+    id:string
+  }>
+  ({
+    show: false,
+    id: ""
+  });
+  
+  
   
   const fetchData = async () => {
     try {
