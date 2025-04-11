@@ -6,7 +6,14 @@ import { ProductType } from '@/types/ProductType'
 import React, { useState } from 'react'
 import PictureLogo from '../../assets/ImageLogo.png'
 import Image from 'next/image'
-const ProductBox = ({product, setEditModal} : {product: ProductType, setEditModal: Function}) => {
+const ProductBox = ({
+  product, 
+  setEditModal,
+  setDeleteModal
+} : {
+  product: ProductType, 
+  setEditModal: Function,
+  setDeleteModal: Function}) => {
   const [fallback, setFallback] = useState<boolean>(false);
   return (
    <div className="p-5 flex w-full items-center bg-slate-700 rounded-xl border-2 border-gray-500">
@@ -63,7 +70,17 @@ const ProductBox = ({product, setEditModal} : {product: ProductType, setEditModa
         >
           Edit Item
         </button>
-        <button className='w-[60%] border-white border-2 bg-slate-900 p-2 rounded-lg font-bold text-2xl shadow-lg hover:bg-slate-800'>
+        <button 
+          className='
+            w-[60%] border-white border-2 bg-slate-900 p-2
+            rounded-lg font-bold text-2xl shadow-lg hover:bg-slate-800'
+          onClick={() => {
+            setDeleteModal({
+              id: product._id,
+              show: true
+            });
+          }}
+          >
           Delete Item
        </button>
       </div>

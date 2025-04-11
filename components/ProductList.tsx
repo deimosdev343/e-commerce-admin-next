@@ -32,7 +32,7 @@ const ProductList = () => {
     id:string
   }>
   ({
-    show: true,
+    show: false,
     id: ""
   });
   
@@ -65,7 +65,12 @@ const ProductList = () => {
       <DeleteProduct modalState={productDeleteModal} setModalState={setProductDeleteModal}/>
       <EditProduct modalState={productEditModal} setModalState={setProductEditmodal}/>
       <TopBarProductList params={productParams} setParams={setProductParams} />
-      {products.map(prd => <ProductBox key={prd._id} product={prd} setEditModal={setProductEditmodal}/>)} 
+      {products.map(prd => <ProductBox 
+        key={prd._id}
+        product={prd} 
+        setEditModal={setProductEditmodal} 
+        setDeleteModal={setProductDeleteModal}
+      />)} 
     </div>
   )
 }
