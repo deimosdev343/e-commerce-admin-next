@@ -21,6 +21,7 @@ const LoginPage = () => {
 
   const onSubmit = async (data : {email: string, password: string}) => {
     try {
+      event?.preventDefault();
       console.log(data);
       const res = await axios.post(`/api/login`,data);
       dispatch(loginUser(res.data.user));
