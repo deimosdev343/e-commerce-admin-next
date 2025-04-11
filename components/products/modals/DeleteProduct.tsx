@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import { Modal } from "flowbite-react";
 
 interface modalStateType {
@@ -12,6 +13,18 @@ const DeleteProduct = (
   {modalState: modalStateType, setModalState: Function}
 ) => {
 
+  const onDelete = async () => {
+    try {
+      await axios.delete('/api/products',{
+        params:{
+          id:modalState.id
+        }
+      });
+      setModalState({id:null, show: false});
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <Modal 
       show={modalState.show}
@@ -32,6 +45,7 @@ const DeleteProduct = (
           <div className="w-full flex items-center justify-between">
             <button
               className="bg-slate-800 rounded-lg p-2 w-[45%] text-lg font-bold text-white"
+              onClick={onDelete}
             >
               Yes
             </button>
