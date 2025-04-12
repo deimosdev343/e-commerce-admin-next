@@ -68,6 +68,9 @@ const EditProduct = ({modalState, setModalState} :{
       if(modalState.type === "Edit") {
         await axios.put(`/api/products`, {product:productToSend})
       }
+      else if(modalState.type === "Create") {
+        await axios.post(`/api/products`, {product:productToSend})
+      }
 
       setModalState((mdlState: modalStateType) => ({...mdlState, show:false}))
     } catch (err) {
