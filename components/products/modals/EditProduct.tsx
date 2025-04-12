@@ -164,17 +164,29 @@ const EditProduct = ({modalState, setModalState} :{
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
         <h2 className='font-bold text-2xl'>
+          Image
+        </h2>
+        <TextInput 
+          className="w-full font-semibold"
+          value={modalState.product?.image} 
+          onChange={(e) => setModalState((
+            mdlstate: modalStateType ) => (
+              {...mdlstate, product: {...mdlstate.product, image: e.target.value}}))}
+        />
+      </div>
+      <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+        <h2 className='font-bold text-2xl'>
           Category
         </h2>
         <select
           name="sort"
           id=""
-          className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full" 
+          className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full"
+          value={modalState.product?.category}
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, category: e.target.value}}))}
         >
-          <option>Sort By</option>
           {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
       </div>

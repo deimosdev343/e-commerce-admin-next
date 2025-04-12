@@ -38,6 +38,20 @@ const ProductList = () => {
   
   
   
+  const createItemFunc = async () => {
+    setProductParams(prms =>  ({
+      ...prms,
+      category: null,
+      sortBy: "CreatedAtDesc",
+      name:""
+    }));
+    setProductEditmodal({
+      show: true,
+      product: null,
+      type:"Create"
+    })
+  }
+  
   const fetchData = async () => {
     try {
       const data = (await axios.get('/api/products', {
