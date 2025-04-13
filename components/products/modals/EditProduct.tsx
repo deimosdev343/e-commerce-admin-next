@@ -223,20 +223,18 @@ const EditProduct = ({modalState, setModalState} :{
         </select>
       </div>
       <div className='flex flex-col p-4 '>
-        <h2 className='font-bold text-2xl'>
-          Colors
-        </h2>
-        <div className="w-[15%] mt-2 flex flex-row">
+        <div className='w-full flex items-center gap-2'>
+          <h2 className='font-bold text-2xl'>
+            Colors
+          </h2>
           <Image 
             src={AddIcon}
             alt="add color"
-            className="w-7 cursor-pointer"
+            className="w-5 cursor-pointer"
             onClick={() => setColorPicker(colorP => ({...colorP, show: !colorP.show}))}
           />
         </div>
-        <div className="w-auto p-4 grid grid-cols-4 justify-start items-center gap-5 overflow-x-scroll">
-          {modalState.product?.colors.map(clr => <ProductColor key={clr} color={clr} onRemoveColor={onRemoveColor}/>)}
-        </div>
+        
         {colorPicker.show && 
           <div className="w-full flex flex-row justify-between
             items-center gap-5 p-5  bg-slate-800 rounded-xl"
@@ -253,6 +251,9 @@ const EditProduct = ({modalState, setModalState} :{
             </button> 
           </div>
         }
+        <div className="w-auto p-4 grid grid-cols-4 justify-start items-center gap-5 overflow-x-scroll">
+          {modalState.product?.colors.map(clr => <ProductColor key={clr} color={clr} onRemoveColor={onRemoveColor}/>)}
+        </div>
         <div className="w-full flex flex-col justify-start items-center gap-2 p-2 border-slate-500 border-2 rounded-xl">
           <h2 className="text-white text-2xl font-bold">Sizes</h2>
           <div className="grid grid-cols-6 w-full items-center">
