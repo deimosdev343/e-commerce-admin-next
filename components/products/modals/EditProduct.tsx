@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import ProductColor from '../ProductColor';
 import AddIcon from '../../../assets/add.png';
 import Image from 'next/image';
+import UploadImageIcon from '../../../assets/photo.png';
 import {CirclePicker} from 'react-color';
 import { CldUploadWidget } from 'next-cloudinary';
 const ColorPickerColors = [
@@ -187,14 +188,18 @@ const EditProduct = ({modalState, setModalState} :{
               open();
             }
             return (
-              <button onClick={handleOnClick}>
-                Upload an Image
+              <button className='flex w-full relative' onClick={handleOnClick}>
+                <Image
+                  src={UploadImageIcon}
+                  alt='Upload Image'
+                  className='top-3 left-0 absolute w-9 z-10'
+                />
               </button>
             );
           }}
         </CldUploadWidget>
         <TextInput 
-          className="w-full font-semibold"
+          className="pl-10 w-full font-semibold"
           value={modalState.product?.image} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
