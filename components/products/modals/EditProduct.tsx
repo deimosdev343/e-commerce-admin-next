@@ -1,6 +1,7 @@
 "use client";
 
 import { categoryType, ProductType } from '@/types/ProductType'
+import { CloudinaryUploadWidgetInfo } from 'next-cloudinary';
 import axios from 'axios';
 import { Modal, TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
@@ -8,6 +9,7 @@ import ProductColor from '../ProductColor';
 import AddIcon from '../../../assets/add.png';
 import Image from 'next/image';
 import {CirclePicker} from 'react-color';
+import { CldUploadWidget } from 'next-cloudinary';
 const ColorPickerColors = [
   "#fcba03",
   "#fce303",
@@ -169,6 +171,28 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='font-bold text-2xl'>
           Image
         </h2>
+        <CldUploadWidget
+          signatureEndpoint="/api/upload"
+          onSuccess={({info, event}, { widget }) => {
+            setModalState((mdlstate: modalStateType) => 
+              ({...mdlstate,
+                product: {...mdlstate.product, image: (info as CloudinaryUploadWidgetInfo).secure_url}}));  
+          }}
+          onQueuesEnd={(result, { widget }) => {
+            widget.close();
+          }}
+        >
+          {({ open }) => {
+            function handleOnClick() {
+              open();
+            }
+            return (
+              <button onClick={handleOnClick}>
+                Upload an Image
+              </button>
+            );
+          }}
+        </CldUploadWidget>
         <TextInput 
           className="w-full font-semibold"
           value={modalState.product?.image} 
@@ -182,7 +206,7 @@ const EditProduct = ({modalState, setModalState} :{
           Category
         </h2>
         <select
-          name="sort"
+          name="category"
           id=""
           className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full"
           value={modalState.product?.category}
