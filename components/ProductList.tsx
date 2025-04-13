@@ -45,9 +45,20 @@ const ProductList = () => {
       sortBy: "CreatedAtDesc",
       name:""
     }));
+
     setProductEditmodal({
       show: true,
-      product: null,
+      product: {
+        _id:"",
+        name:"",
+        category:"",
+        description:"",
+        extraImages: [],
+        sizes: [],
+        colors:[],
+        image: "",
+        price: 0,
+      },
       type:"Create"
     })
   }
