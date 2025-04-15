@@ -19,6 +19,8 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
         }
       }
     );
+
+    console.log(productsData.data)
     return NextResponse.json(
       productsData.data,
       {status:200}

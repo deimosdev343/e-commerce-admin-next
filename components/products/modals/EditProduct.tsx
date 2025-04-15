@@ -11,6 +11,7 @@ import Image from 'next/image';
 import UploadImageIcon from '../../../assets/photo.png';
 import {CirclePicker} from 'react-color';
 import { CldUploadWidget } from 'next-cloudinary';
+import ExtraImage from '../ExtraImage';
 const ColorPickerColors = [
   "#fcba03",
   "#fce303",
@@ -53,7 +54,7 @@ const EditProduct = ({modalState, setModalState} :{
     show:false,
     color:""
   }); 
-  
+  console.log(modalState.product)
   const submitProduct = async () => {
     try {
       const productToSend = {
@@ -221,6 +222,10 @@ const EditProduct = ({modalState, setModalState} :{
         >
           {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
+      </div>
+      <div className="w-full flex flex-col justify-start items-center gap-2 p-2 border-slate-500 border-2 rounded-xl">
+        <h2 className="text-white text-xl font-bold">Extra Images</h2>
+        {modalState.product?.extraImages.map(img => <h2 className='text-white font-bold text-2xl'>IMG</h2>)}
       </div>
       <div className='flex flex-col p-4 '>
         <div className='w-full flex items-center gap-2'>
