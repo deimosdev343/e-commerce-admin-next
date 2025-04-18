@@ -223,9 +223,20 @@ const EditProduct = ({modalState, setModalState} :{
           {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
       </div>
-      <div className="w-full flex flex-col justify-start items-center gap-2 p-2 border-slate-500 border-2 rounded-xl">
-        <h2 className="text-white text-xl font-bold">Extra Images</h2>
-        {modalState.product?.extraImages.map(img => <ExtraImage img={img}/>)}
+      <div className="w-full flex flex-col justify-start items-center gap-1 p-2 border-slate-500 border-2 rounded-xl">
+        <div className='w-full flex justify-center items-center relative'>
+          <h2 className="text-white text-xl font-bold">Extra Images</h2>
+          <button className='flex m-2 relative'>
+            <Image
+              src={UploadImageIcon}
+              alt='Upload Image'
+              className='w-8'
+            />
+          </button>
+        </div>
+        <div className='grid grid-cols-3 w-full gap-2'>
+          {modalState.product?.extraImages.map((img,index) => <ExtraImage key={img +index} img={img}/>)}
+        </div>
       </div>
       <div className='flex flex-col p-4 '>
         <div className='w-full flex items-center gap-2'>
