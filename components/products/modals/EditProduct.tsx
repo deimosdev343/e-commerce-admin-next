@@ -226,13 +226,42 @@ const EditProduct = ({modalState, setModalState} :{
       <div className="w-full flex flex-col justify-start items-center gap-1 p-2 border-slate-500 border-2 rounded-xl">
         <div className='w-full flex justify-center items-center relative'>
           <h2 className="text-white text-xl font-bold">Extra Images</h2>
-          <button className='flex m-2 relative'>
-            <Image
-              src={UploadImageIcon}
-              alt='Upload Image'
-              className='w-8'
-            />
-          </button>
+          <CldUploadWidget
+            signatureEndpoint="/api/upload"
+            onSuccess={({info, event}, { widget }) => {
+              setModalState((mdlstate: modalStateType) => {
+                const newImages = mdlstate.product?.extraImages 
+                  ? [...mdlstate.product.extraImages,
+                      (info as CloudinaryUploadWidgetInfo).secure_url] 
+                  : [(info as CloudinaryUploadWidgetInfo).secure_url];
+                return ({...mdlstate,
+                  product: {
+                    ...mdlstate.product, 
+                    extraImages:newImages
+                  }
+                }
+              )} );
+            }}
+            onQueuesEnd={(result, { widget }) => {
+              console.log(modalState)
+              widget.close();
+            }}
+          >
+            {({ open }) => {
+              function handleOnClick() {
+                open();
+              }
+              return (
+                <button className='flex m-2 relative' onClick={handleOnClick}>
+                  <Image
+                    src={UploadImageIcon}
+                    alt='Upload Image'
+                    className='w-8'
+                  />
+                </button>
+              );
+            }}
+        </CldUploadWidget>
         </div>
         <div className='grid grid-cols-3 w-full gap-2'>
           {modalState.product?.extraImages.map((img,index) => <ExtraImage key={img +index} img={img}/>)}
