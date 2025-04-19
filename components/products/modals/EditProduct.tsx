@@ -53,8 +53,21 @@ const EditProduct = ({modalState, setModalState} :{
   const [colorPicker, setColorPicker] = useState({
     show:false,
     color:""
-  }); 
-  console.log(modalState.product)
+  });
+
+
+  const removeExtraImage =  (index: number) => {
+    setModalState((mdlState: modalStateType ) => {
+      let newExtraImages = 
+        mdlState.product?.extraImages 
+        ?  [...mdlState.product?.extraImages] 
+        : [];
+
+        newExtraImages = newExtraImages.splice(index, 1)
+        return {...mdlState, product: {...mdlState.product, extraImages: newExtraImages}};
+      })
+
+  }
   const submitProduct = async () => {
     try {
       const productToSend = {
