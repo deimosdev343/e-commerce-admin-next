@@ -63,7 +63,7 @@ const EditProduct = ({modalState, setModalState} :{
         ?  [...mdlState.product?.extraImages] 
         : [];
 
-        newExtraImages = newExtraImages.splice(index, 1)
+        newExtraImages.splice(index, 1)
         return {...mdlState, product: {...mdlState.product, extraImages: newExtraImages}};
       })
 
@@ -280,7 +280,8 @@ const EditProduct = ({modalState, setModalState} :{
           {modalState.product?.extraImages.map((img,index) => <ExtraImage 
             key={img +index} 
             img={img}
-            removeExtraImage={() => {removeExtraImage(index)}}
+            removeExtraImage={removeExtraImage}
+            index={index}
           />)}
         </div>
       </div>
