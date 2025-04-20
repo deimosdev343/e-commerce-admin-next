@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
 
-const ExtraImage = ({img}: {img:string}) => {
+const ExtraImage = ({img, removeExtraImage}: {img:string, removeExtraImage: Function}) => {
   return (
     <div className='flex flex-col items-center p-1 w-[100%] bg-gray-500 rounded-lg '>
       <Image

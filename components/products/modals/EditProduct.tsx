@@ -277,7 +277,11 @@ const EditProduct = ({modalState, setModalState} :{
         </CldUploadWidget>
         </div>
         <div className='grid grid-cols-3 w-full gap-2'>
-          {modalState.product?.extraImages.map((img,index) => <ExtraImage key={img +index} img={img}/>)}
+          {modalState.product?.extraImages.map((img,index) => <ExtraImage 
+            key={img +index} 
+            img={img}
+            removeExtraImage={() => {removeExtraImage(index)}}
+          />)}
         </div>
       </div>
       <div className='flex flex-col p-4 '>
