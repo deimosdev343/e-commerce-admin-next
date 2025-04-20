@@ -70,6 +70,8 @@ const EditProduct = ({modalState, setModalState} :{
   }
   const submitProduct = async () => {
     try {
+
+      //TODO: IMPORTANT, VALIDATE THE FUCKING INPUT
       const productToSend = {
         id:modalState.product?._id,
         name:modalState.product?.name,
