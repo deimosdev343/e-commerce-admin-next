@@ -90,7 +90,7 @@ const ProductList = () => {
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <DeleteProduct modalState={productDeleteModal} setModalState={setProductDeleteModal}/>
       <EditProduct modalState={productEditModal} setModalState={setProductEditmodal}/>
-      <TopBarProductList params={productParams} setParams={setProductParams} />
+      <TopBarProductList params={productParams} setParams={setProductParams} createItemFunc={createItemFunc}/>
       {products.map(prd => <ProductBox 
         key={prd._id}
         product={prd} 

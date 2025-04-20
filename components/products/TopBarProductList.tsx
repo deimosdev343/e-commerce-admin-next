@@ -11,10 +11,13 @@ interface ParamsObj  {
 const TopBarProductList = (
   {
     params, 
-    setParams
+    setParams,
+    createItemFunc
   } : {
     params: ParamsObj,
-    setParams: Function}
+    setParams: Function
+    createItemFunc: Function
+  }
 ) => {
 
   const [searchTerm, setSearchTerm] = useState(params.name);
@@ -39,7 +42,7 @@ const TopBarProductList = (
           Search
         </button>
       </div>
-      <div className='w-full flex p-2'>
+      <div className='w-full flex p-2 justify-between pr-6 '>
         <select
           name="sort"
           id=""
@@ -55,6 +58,12 @@ const TopBarProductList = (
           <option value="createdAtDesc">Newest</option>
           <option value="createdAtAsc">Oldest</option>
         </select>
+        <button 
+          className='rounded-md bg-slate-900 text-white font-bold w-[18%] p-2 border-2 text-2xl'
+          onClick={() => createItemFunc()}
+        >
+          Add Item
+        </button>
       </div>
     </div> 
   )
