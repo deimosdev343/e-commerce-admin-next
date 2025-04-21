@@ -89,6 +89,41 @@ const EditProduct = ({modalState, setModalState} :{
   const submitProduct = async () => {
     try {
 
+      if(!modalState.product?.name) {
+        setErrorState(ers=> ({...ers, nameError:"Name is missing"}));
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, nameError:""}));  
+        }, 3000)
+      }
+
+      if(!modalState.product?.image) {
+        setErrorState(ers=> ({...ers, imageError:"image is missing"}));
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, imageError:""}));  
+        }, 3000)
+      }
+
+      if(!modalState.product?.description) {
+        setErrorState(ers=> ({...ers, descriptionError:"description is missing"}));
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, descriptionError:""}));  
+        }, 3000)
+      }
+
+      if(!modalState.product?.price || modalState.product?.price <= 0 ) {
+        if(!modalState.product?.price) {
+          setErrorState(ers=> ({...ers, priceError:"price is missing"}));
+        } 
+        else if(Number(modalState.product.price) <= 0) {
+          setErrorState(ers=> ({...ers, priceError:"price Number is invalid"}));
+
+        }        
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, priceError:""}));  
+        }, 3000)
+      }
+      
+
       //TODO: IMPORTANT, VALIDATE THE FUCKING INPUT
       const productToSend = {
         id:modalState.product?._id,
