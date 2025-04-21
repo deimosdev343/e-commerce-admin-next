@@ -122,7 +122,7 @@ const EditProduct = ({modalState, setModalState} :{
           setErrorState(ers=> ({...ers, priceError:""}));  
         }, 3000)
       }
-      
+
 
       //TODO: IMPORTANT, VALIDATE THE FUCKING INPUT
       const productToSend = {
@@ -224,6 +224,7 @@ const EditProduct = ({modalState, setModalState} :{
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, name: e.target.value}}))}
         />
+        <h2 className='text-red-500 font-bold'>{errorState.nameError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
         <h2 className='font-bold text-2xl'>
@@ -390,6 +391,14 @@ const EditProduct = ({modalState, setModalState} :{
           >
             Save
           </button>
+          {( errorState.categoryError
+            || errorState.colorsError
+            || errorState.nameError
+            || errorState.imageError
+            || errorState.sizesError
+            || errorState.descriptionError )
+            && <h2 className='text-red-500 font-bold'>Some of the inputs were incorrect</h2>
+          }
         </div>
       </div>
      </Modal.Body>
