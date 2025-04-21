@@ -44,6 +44,16 @@ interface modalStateType {
   product: ProductType | null,
   type: "Edit" | "Create" 
 }
+
+interface errorStateType {
+  nameError: string,
+  categoryError: string,
+  colorsError: string,
+  descriptionError: string,
+  imageError: string,
+  priceError: string,
+  sizesError: string
+}
 const EditProduct = ({modalState, setModalState} :{
   modalState: modalStateType
   setModalState: Function
@@ -54,7 +64,15 @@ const EditProduct = ({modalState, setModalState} :{
     show:false,
     color:""
   });
-
+  const [errorState, setErrorState] = useState<errorStateType>({
+    nameError: "",
+    categoryError: "",
+    colorsError: "",
+    descriptionError: "",
+    imageError: "",
+    priceError: "",
+    sizesError: ""
+  });
 
   const removeExtraImage =  (index: number) => {
     setModalState((mdlState: modalStateType ) => {
