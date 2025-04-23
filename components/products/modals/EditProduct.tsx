@@ -237,6 +237,7 @@ const EditProduct = ({modalState, setModalState} :{
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, price: e.target.value}}))}
         />
+        <h2 className='text-red-500 font-bold'>{errorState.priceError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
         <h2 className='font-bold text-2xl'>
