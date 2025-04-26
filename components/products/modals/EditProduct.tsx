@@ -232,12 +232,12 @@ const EditProduct = ({modalState, setModalState} :{
         </h2>
         <TextInput 
           className="w-full font-semibold"
-          value={modalState.product?.name} 
+          value={modalState.product?.description} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, description: e.target.value}}))}
         />
-        <h2 className='text-red-500 font-bold'>{errorState.nameError}</h2>
+        <h2 className='text-red-500 font-bold'>{errorState.descriptionError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
         <h2 className='font-bold text-2xl'>
