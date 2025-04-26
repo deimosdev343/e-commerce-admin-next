@@ -80,7 +80,7 @@ const EditProduct = ({modalState, setModalState} :{
         mdlState.product?.extraImages 
         ?  [...mdlState.product?.extraImages] 
         : [];
-
+ 
         newExtraImages.splice(index, 1)
         return {...mdlState, product: {...mdlState.product, extraImages: newExtraImages}};
       })
@@ -228,6 +228,19 @@ const EditProduct = ({modalState, setModalState} :{
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
         <h2 className='font-bold text-2xl'>
+          Description
+        </h2>
+        <TextInput 
+          className="w-full font-semibold"
+          value={modalState.product?.name} 
+          onChange={(e) => setModalState((
+            mdlstate: modalStateType ) => (
+              {...mdlstate, product: {...mdlstate.product, description: e.target.value}}))}
+        />
+        <h2 className='text-red-500 font-bold'>{errorState.nameError}</h2>
+      </div>
+      <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+        <h2 className='font-bold text-2xl'>
           Price
         </h2>
         <TextInput 
@@ -276,6 +289,8 @@ const EditProduct = ({modalState, setModalState} :{
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, image: e.target.value}}))}
         />
+        <h2 className='text-red-500 font-bold'>{errorState.imageError}</h2>
+
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
         <h2 className='font-bold text-2xl'>
@@ -292,6 +307,7 @@ const EditProduct = ({modalState, setModalState} :{
         >
           {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
+        <h2 className='text-red-500 font-bold'>{errorState.categoryError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-center gap-1 p-2 border-slate-500 border-2 rounded-xl">
         <div className='w-full flex justify-center items-center relative'>
