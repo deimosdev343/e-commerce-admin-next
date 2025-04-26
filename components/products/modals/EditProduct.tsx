@@ -123,6 +123,18 @@ const EditProduct = ({modalState, setModalState} :{
         }, 3000)
       }
 
+      if(!modalState.product?.sizes || modalState.product?.sizes.length === 0 ) {
+        if(!modalState.product?.sizes) {
+          setErrorState(ers=> ({...ers, priceError:"sizes is missing"}));
+        }
+        else if(modalState.product?.sizes.length === 0) {
+          setErrorState(ers=> ({...ers, priceError:"No size selected"}));
+        }
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, priceError:""}));  
+        }, 3000)
+      }
+
 
       //TODO: IMPORTANT, VALIDATE THE FUCKING INPUT
       const productToSend = {
