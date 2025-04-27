@@ -29,7 +29,7 @@ const TopBarProductList = (
           Search Settings
         </h2>
       </div>
-      <div className='w-full flex items-center p-2 gap-2 '>
+      <div className='w-full flex items-between justify-between p-5 gap-2 '>
         <input
           className='rounded-md bg-white w-[80%] p-3 text-black'
           value={searchTerm}
@@ -42,7 +42,7 @@ const TopBarProductList = (
           Search
         </button>
       </div>
-      <div className='w-full flex p-2 justify-between pr-6 '>
+      <div className='w-full flex p-2 justify-between px-5 '>
         <select
           name="sort"
           id=""
