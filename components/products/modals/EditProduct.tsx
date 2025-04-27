@@ -3,7 +3,7 @@
 import { categoryType, ProductType } from '@/types/ProductType'
 import { CloudinaryUploadWidgetInfo } from 'next-cloudinary';
 import axios from 'axios';
-import { Modal, TextInput } from 'flowbite-react';
+import { Modal, Textarea, TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import ProductColor from '../ProductColor';
 import AddIcon from '../../../assets/add.png';
@@ -242,7 +242,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='font-bold text-2xl'>
           Description
         </h2>
-        <TextInput 
+        <Textarea
           className="w-full font-semibold"
           value={modalState.product?.description} 
           onChange={(e) => setModalState((
