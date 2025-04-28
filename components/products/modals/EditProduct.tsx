@@ -95,21 +95,14 @@ const EditProduct = ({modalState, setModalState} :{
           setErrorState(ers=> ({...ers, nameError:""}));  
         }, 3000)
       }
-
-      if(!modalState.product?.image) {
-        setErrorState(ers=> ({...ers, imageError:"image is missing"}));
-        return setTimeout(() => {
-          setErrorState(ers=> ({...ers, imageError:""}));  
-        }, 3000)
-      }
-
+      
       if(!modalState.product?.description) {
         setErrorState(ers=> ({...ers, descriptionError:"description is missing"}));
         return setTimeout(() => {
           setErrorState(ers=> ({...ers, descriptionError:""}));  
         }, 3000)
       }
-
+      
       if(!modalState.product?.price || modalState.product?.price <= 0 ) {
         if(!modalState.product?.price) {
           setErrorState(ers=> ({...ers, priceError:"price is missing"}));
@@ -122,6 +115,15 @@ const EditProduct = ({modalState, setModalState} :{
           setErrorState(ers=> ({...ers, priceError:""}));  
         }, 3000)
       }
+
+      if(!modalState.product?.image) {
+        setErrorState(ers=> ({...ers, imageError:"image is missing"}));
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, imageError:""}));  
+        }, 3000)
+      }
+
+
 
       if(!modalState.product?.sizes || modalState.product?.sizes.length === 0 ) {
         if(!modalState.product?.sizes) {
