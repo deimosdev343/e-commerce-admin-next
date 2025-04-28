@@ -102,7 +102,7 @@ const EditProduct = ({modalState, setModalState} :{
           setErrorState(ers=> ({...ers, descriptionError:""}));  
         }, 3000)
       }
-      
+
       if(!modalState.product?.price || modalState.product?.price <= 0 ) {
         if(!modalState.product?.price) {
           setErrorState(ers=> ({...ers, priceError:"price is missing"}));
@@ -127,13 +127,13 @@ const EditProduct = ({modalState, setModalState} :{
 
       if(!modalState.product?.sizes || modalState.product?.sizes.length === 0 ) {
         if(!modalState.product?.sizes) {
-          setErrorState(ers=> ({...ers, priceError:"sizes is missing"}));
+          setErrorState(ers=> ({...ers, sizesError:"sizes is missing"}));
         }
         else if(modalState.product?.sizes.length === 0) {
-          setErrorState(ers=> ({...ers, priceError:"No size selected"}));
+          setErrorState(ers=> ({...ers, sizesError:"No size selected"}));
         }
         return setTimeout(() => {
-          setErrorState(ers=> ({...ers, priceError:""}));  
+          setErrorState(ers=> ({...ers, sizesError:""}));  
         }, 3000)
       }
 
@@ -304,7 +304,6 @@ const EditProduct = ({modalState, setModalState} :{
               {...mdlstate, product: {...mdlstate.product, image: e.target.value}}))}
         />
         <h2 className='text-red-500 font-bold'>{errorState.imageError}</h2>
-
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
         <h2 className='font-bold text-2xl'>
@@ -412,6 +411,7 @@ const EditProduct = ({modalState, setModalState} :{
               <input type="checkbox" className="" checked={modalState.product?.sizes.includes(size)} onChange={() => onAddRemoveSize(size)}/>
             </div>)}
           </div>
+          <h2 className='text-red-500 font-bold'>{errorState.sizesError}</h2>
         </div>
         <div className='w-full flex flex-col items-center'>
           <button
