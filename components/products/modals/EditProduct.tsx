@@ -122,6 +122,7 @@ const EditProduct = ({modalState, setModalState} :{
           setErrorState(ers=> ({...ers, imageError:""}));  
         }, 3000)
       }
+      
       if(!modalState.product?.category) {
         setErrorState(ers=> ({...ers, categoryError:"category is missing"}));
         return setTimeout(() => {
@@ -143,6 +144,17 @@ const EditProduct = ({modalState, setModalState} :{
         }, 3000)
       }
 
+      if(!modalState.product?.colors || modalState.product?.colors.length <= 0 ) {
+        if(!modalState.product?.colors) {
+          setErrorState(ers=> ({...ers, colorsError:"colors is missing"}));
+        }
+        else if(modalState.product?.colors.length === 0) {
+          setErrorState(ers=> ({...ers, colorsError:"No colors selected"}));
+        }
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, colorsError:""}));  
+        }, 3000)
+      }
 
       //TODO: IMPORTANT, VALIDATE THE FUCKING INPUT
       const productToSend = {
@@ -390,6 +402,7 @@ const EditProduct = ({modalState, setModalState} :{
             onClick={() => setColorPicker(colorP => ({...colorP, show: !colorP.show}))}
           />
         </div>
+        <h2 className='text-red-500 font-bold'>{errorState.colorsError}</h2>
         
         {colorPicker.show && 
           <div className="w-full flex flex-row justify-between
