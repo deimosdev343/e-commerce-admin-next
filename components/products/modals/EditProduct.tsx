@@ -122,6 +122,12 @@ const EditProduct = ({modalState, setModalState} :{
           setErrorState(ers=> ({...ers, imageError:""}));  
         }, 3000)
       }
+      if(!modalState.product?.category) {
+        setErrorState(ers=> ({...ers, categoryError:"category is missing"}));
+        return setTimeout(() => {
+          setErrorState(ers=> ({...ers, categoryError:""}));  
+        }, 3000)
+      }
 
 
 
@@ -313,11 +319,12 @@ const EditProduct = ({modalState, setModalState} :{
           name="category"
           id=""
           className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full"
-          value={modalState.product?.category}
+          defaultValue={modalState.product?.category}
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, category: e.target.value}}))}
         >
+          <option value={""}>"None"</option>
           {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
         <h2 className='text-red-500 font-bold'>{errorState.categoryError}</h2>
