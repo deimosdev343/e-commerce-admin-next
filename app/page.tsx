@@ -19,8 +19,8 @@ export default async function Home() {
           image={ProdcutIcon}
         />
         <LinkBox
-          title={"Sales"}
-          link={'/sales'}
+          title={"Statistics"}
+          link={'/stats'}
           image={GrowthIcon}
         />
         <LinkBox
