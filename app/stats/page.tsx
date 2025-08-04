@@ -3,7 +3,7 @@ import React from 'react'
 
 const StatsPage = () => {
   return (
-    <div>
+    <div className='w-full h-screen p-5'>
       <MostViewedItemsComponent/>
     </div>
   )
