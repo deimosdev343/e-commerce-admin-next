@@ -8,7 +8,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     const cks = await cookies();
     const token =  cks.get("token")?.value;
     const viewData = await axios.get(
-      `${process.env.BACKEND_API}/statistics/topViews`,
+      `${process.env.BACKEND_API}/stats/topViews`,
       {
         headers:{
           Authorization: `bearer ${token}`
@@ -16,7 +16,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       }
     );
     return NextResponse.json(
-      viewData,
+      viewData.data,
       {status:200}
     );
   } catch (err) {
