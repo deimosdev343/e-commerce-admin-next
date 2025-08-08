@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const data01 = [
   { name: 'Group A', value: 400 },
@@ -28,34 +28,38 @@ const MostViewedItemsComponent = () => {
   const fetchMostViewed = async () => {
     try {
       const res = await axios.get('/api/statistics/mostViewed');
-      const newTopViews = res.data.map((d:any) => ({...d, value: d.views, name: d.product.name}));
+      const newTopViews = res.data.map((d:any) => ({...d, views: d.views, name: d.product.name}));
       setTopViews(newTopViews)
     } catch (err) {
       console.log(err);
     }
   }
-  console.log(topViews)
   useEffect(() => {
     fetchMostViewed();
   }, [])
 
   return (
-    <div className="w-[30%] h-[45%] p-5 flex flex-col items-center justify-center bg-slate-600 rounded-lg shadow-lg">
-      <h2 className="text-xl text-white font-bold">Top Views</h2>
+    <div className="w-[45%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-gray-200 rounded-lg border-2">
+      <h2 className="text-xl text-black font-bold">Top Views</h2>
       <ResponsiveContainer width="100%" height="100%">
-      <PieChart width={400} height={400}>
-        <Pie
-          dataKey="value"
-          isAnimationActive={false}
-          data={topViews}
-          cx="50%"
-          cy="50%"
-          outerRadius={80}
-          fill="#8884d8"
-          label
-        />
+      <BarChart
+        width={500}
+        height={300}
+        data={topViews}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
         <Tooltip />
-      </PieChart>
+        <Legend />
+        <Bar dataKey="views" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
+      </BarChart>
     </ResponsiveContainer>
     </div>
   )
