@@ -25,8 +25,8 @@ const MostViewedItemsComponent = () => {
   }, [])
 
   return (
-    <div className="w-[50%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-gray-200 rounded-lg border-2">
-      <h2 className="text-xl text-black font-bold">Top Views</h2>
+    <div className="w-[45%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
+      <h2 className="text-xl text-white font-bold">Top Views</h2>
       <div className="w-full flex flex-col">
         <BarChart
           xAxis={[
@@ -39,12 +39,21 @@ const MostViewedItemsComponent = () => {
           series={[
             {
               data:topViews.map(v => v.views),
-              color:""
+              color:"#4d5bab"
             }
           ]}
+          sx={{
+            "& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
+              fill: "white", // your color here
+            },
+         
+            "& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
+              fill: "white",
+            },
+          }}
         />
       </div>
-      <button className="text-white font-bold bg-slate-600 rounded-lg p-2 shadow-xl">
+      <button className="text-white font-bold bg-slate-700 rounded-lg p-2 shadow-xl">
         Expand
       </button>
     </div>
