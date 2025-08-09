@@ -246,7 +246,7 @@ const EditProduct = ({modalState, setModalState} :{
      </Modal.Header>
      <Modal.Body className='bg-gray-600  shadow-xl'>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl'>
+        <h2 className='font-bold text-2xl text-white'>
           Item Name
         </h2>
         <TextInput 
@@ -259,7 +259,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.nameError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl'>
+        <h2 className='font-bold text-2xl text-white'>
           Description
         </h2>
         <Textarea
@@ -272,7 +272,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.descriptionError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl'>
+        <h2 className='font-bold text-2xl text-white'>
           Price
         </h2>
         <TextInput 
@@ -285,7 +285,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.priceError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl'>
+        <h2 className='font-bold text-2xl text-white'>
           Image
         </h2>
         <CldUploadWidget
@@ -324,7 +324,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.imageError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl'>
+        <h2 className='font-bold text-2xl text-white'>
           Category
         </h2>
         <select
@@ -392,7 +392,7 @@ const EditProduct = ({modalState, setModalState} :{
       </div>
       <div className='flex flex-col p-4 '>
         <div className='w-full flex items-center gap-2'>
-          <h2 className='font-bold text-2xl'>
+          <h2 className='font-bold text-2xl text-white'>
             Colors
           </h2>
           <Image 

@@ -25,7 +25,7 @@ const TopBarProductList = (
   return (
     <div className='w-full p-2 flex flex-col rounded-lg border-2 border-white bg-slate-700'>
       <div className='w-full flex justify-center p-2'>
-        <h2 className='text-2xl font-bold'>
+        <h2 className='text-2xl font-bold text-white'>
           Search Settings
         </h2>
       </div>
