@@ -41,7 +41,7 @@ const SideBar = () => {
     }, [userData])
   
   return (
-    <div className="hidden md:flex bg-slate-800 w-[25%] md:w-[15%] h-screen  flex-col items-center border-r-2 border-black shadow-2xl">
+    <div className="hidden md:flex bg-slate-600 w-[25%] md:w-[15%] h-screen  flex-col items-center border-r-2 border-black shadow-2xl">
         <div className="w-[90%] p-3 pr-5 pl-5 flex flex-row justify-start items-start gap-3 border-b-2 border-gray-300">
         <h2 className='font-bold text-white text-md'>
           Shop 

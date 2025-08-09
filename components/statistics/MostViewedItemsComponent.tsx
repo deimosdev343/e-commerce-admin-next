@@ -10,12 +10,16 @@ const MostViewedItemsComponent = () => {
     name?: string,
     views: number
   }>>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
 
   const fetchMostViewed = async () => {
     try {
+      
       const res = await axios.get('/api/statistics/mostViewed');
       const newTopViews = res.data.map((d:any) => ({...d, views: d.views, name: d.product.name}));
-      setTopViews(newTopViews)
+      setTopViews(newTopViews);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -24,10 +28,18 @@ const MostViewedItemsComponent = () => {
     fetchMostViewed();
   }, [])
 
+  if(loading) {
+    return (
+      <div className="w-[45%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
+        <h2 className="text-xl text-white font-bold">Top Views</h2>
+        Loading...
+      </div>
+    ) 
+  }
   return (
     <div className="w-[45%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
       <h2 className="text-xl text-white font-bold">Top Views</h2>
-      <div className="w-full flex flex-col">
+      <div className="w-full min-h-[80%] flex flex-col">
         <BarChart
           xAxis={[
             {
