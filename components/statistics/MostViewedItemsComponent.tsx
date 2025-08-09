@@ -2,28 +2,14 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-
-const data01 = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-  { name: 'Group E', value: 278 },
-  { name: 'Group F', value: 189 },
-];
-
-const data02 = [
-  { name: 'Group A', value: 2400 },
-  { name: 'Group B', value: 4567 },
-  { name: 'Group C', value: 1398 },
-  { name: 'Group D', value: 9800 },
-  { name: 'Group E', value: 3908 },
-  { name: 'Group F', value: 4800 },
-];
+import { BarChart } from '@mui/x-charts/BarChart';
+import { axisClasses } from "@mui/x-charts";
 
 const MostViewedItemsComponent = () => {
-  const [topViews, setTopViews] = useState([]);
+  const [topViews, setTopViews] = useState<Array<{
+    name?: string,
+    views: number
+  }>>([]);
 
   const fetchMostViewed = async () => {
     try {
@@ -39,28 +25,28 @@ const MostViewedItemsComponent = () => {
   }, [])
 
   return (
-    <div className="w-[45%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-gray-200 rounded-lg border-2">
+    <div className="w-[50%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-gray-200 rounded-lg border-2">
       <h2 className="text-xl text-black font-bold">Top Views</h2>
-      <ResponsiveContainer width="100%" height="100%">
-      <BarChart
-        width={500}
-        height={300}
-        data={topViews}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="views" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-      </BarChart>
-    </ResponsiveContainer>
+      <div className="w-full flex flex-col">
+        <BarChart
+          xAxis={[
+            {
+              id:"Product Name",
+              data:topViews.map(v => v.name),
+            
+            }
+          ]}
+          series={[
+            {
+              data:topViews.map(v => v.views),
+              color:""
+            }
+          ]}
+        />
+      </div>
+      <button className="text-white font-bold bg-slate-600 rounded-lg p-2 shadow-xl">
+        Expand
+      </button>
     </div>
   )
 }
