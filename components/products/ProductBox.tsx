@@ -42,10 +42,10 @@ const ProductBox = ({
             Colors 
           </h2>
           
-          <div className='grid grid-cols-5 gap-5  items-center bg-gray-900 p-2 rounded-md border-2 border-white '>
+          <div className='grid grid-cols-5 gap-5  items-center bg-gray-700 p-2 shadow-xl rounded-md border-2 border-white '>
             {product.colors.map(clr => <div
               key={clr}
-              className='flex flex-row p-3 rounded-xl shadow-lg'
+              className='flex flex-row p-3 rounded-xl shadow-lg border-white '
               style={{backgroundColor:clr}}
             > 
             </div>)}
@@ -55,7 +55,7 @@ const ProductBox = ({
         </div>
         <div className='w-full flex items-center gap-2'>     
           <h2 className='text-white font-extrabold text-2xl'> sizes: [</h2>
-          {product.sizes.map(sz => <h2 key={sz} className='text-2xl font-bold'>{sz}</h2>)}
+          {product.sizes.map(sz => <h2 key={sz} className='text-2xl font-bold text-white'>{sz}</h2>)}
 
           <h2 className='text-white font-extrabold text-2xl'> ]</h2>
         </div> 
@@ -63,7 +63,7 @@ const ProductBox = ({
       <div className='w-[33%] gap-5 h-full flex flex-col justify-center items-center '>
         <button 
           className='w-[60%] border-white bg-slate-900 border-2 p-2 rounded-lg
-            font-bold text-2xl shadow-lg hover:bg-slate-800'
+            font-bold text-2xl shadow-lg hover:bg-slate-800 text-white'
           onClick={() => {
             setEditModal({show:true, product: {...product}, type: "Edit"})
           }}
@@ -72,8 +72,9 @@ const ProductBox = ({
         </button>
         <button 
           className='
-            w-[60%] border-white border-2 bg-slate-900 p-2
-            rounded-lg font-bold text-2xl shadow-lg hover:bg-slate-800'
+            w-[60%] border-white border-2 bg-slate-900 p-2 
+            rounded-lg font-bold text-2xl shadow-lg
+          text-white hover:bg-slate-800'
           onClick={() => {
             setDeleteModal({
               id: product._id,
