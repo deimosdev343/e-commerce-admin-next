@@ -14,6 +14,7 @@ const MostPurchasedItemsComponent = () => {
       const res = await axios.get('/api/statistics/mostOrdered');
       const newtopPurchases = res.data.map((d:any) => ({...d, purchases: d.orders, name: d.product.name}));
       setTopPurchases(newtopPurchases)
+      setLoading(false)
     } catch (err) {
       console.log(err);
     }
@@ -25,14 +26,15 @@ const MostPurchasedItemsComponent = () => {
   console.log(topPurchases)
   if(loading) {
     return (
-      <div className="w-[45%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
+      <div className="w-[50%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
         <h2 className="text-xl text-white font-bold">Top Ordered Items</h2>
         Loading...
       </div>
     ) 
   }
   return (
-    <div className="w-[45%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
+    <div className="w-[50%] h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
+      <h2 className="text-xl text-white font-bold">Top Sales</h2>
       <div className="w-full min-h-[80%] flex flex-col">
         <BarChart
           xAxis={[

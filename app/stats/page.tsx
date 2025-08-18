@@ -4,9 +4,9 @@ import React from 'react'
 
 const StatsPage = () => {
   return (
-    <div className='w-full h-screen p-5'>
+    <div className='w-full flex gap-2 h-screen p-5'>
       <MostViewedItemsComponent/>
-      {/* <MostPurchasedItemsComponent/> */}
+      <MostPurchasedItemsComponent/>
     </div>
   )
 }
