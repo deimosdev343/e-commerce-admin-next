@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
+import axios from "axios";
 
 const ViewsAndOrdersByDateComponent = () => {
   const [viewsAndOrdersData, setViewsAndOrdersData] = useState();
@@ -13,9 +14,8 @@ const ViewsAndOrdersByDateComponent = () => {
   }
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
-  console.log(viewsAndOrdersData)
   return (
     <div className="w-full h-[45%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
         Loading...
