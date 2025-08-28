@@ -45,6 +45,16 @@ const ViewsAndOrdersByDateComponent = () => {
 
           ]}
           xAxis={[{scaleType:'point', data:viewsAndOrdersData.map(e => e.date)}]}
+          sx={{
+          "& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
+            fill: "white", // your color here
+          },
+        
+          "& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
+            fill: "white",
+          },
+        }}
+
         />
       </div>
     </div>
