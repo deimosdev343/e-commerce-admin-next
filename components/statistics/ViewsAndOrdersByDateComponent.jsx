@@ -30,34 +30,21 @@ const ViewsAndOrdersByDateComponent = () => {
       </div>
     )
   } 
+  const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
   return (
     <div className="w-full h-full p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
       <h2 className="text-xl text-white font-bold">Order and View Count</h2>
       <div className="w-full min-h-[80%] flex flex-col">
         <LineChart
+          
           dataset={viewsAndOrdersData}
-          xAxis={[
-            {
-              dataKey: "date",
-              scaleType: "time",
-              valueFormatter: (date) => date
-            },
-          ]}
+          
           series={[
-            {
-              dataKey: "viewCount",
-              label: "View Count",
-              color: "#1976d2",
-             
-            },
-            {
-              dataKey: "orderCount",
-              label: "Order Count",
-              color: "#d32f2f",
-              
-            },
+            {data:viewsAndOrdersData.map(e => e.viewCount), label:"View Count"},
+            {data:viewsAndOrdersData.map(e => e.orderCount), label:"Order Count"},
+
           ]}
-         
+          xAxis={[{scaleType:'point', data:viewsAndOrdersData.map(e => e.date)}]}
         />
       </div>
     </div>
