@@ -10,7 +10,7 @@ const StatsPage = () => {
         <MostViewedItemsComponent/>
         <MostPurchasedItemsComponent/>
       </div>
-      <div className='w-full flex gap-2'>
+      <div className='w-full flex gap-2 h-[50%]'>
         <ViewsAndOrdersByDateComponent/>
       </div>
     </div>
