@@ -40,8 +40,8 @@ const ViewsAndOrdersByDateComponent = () => {
           dataset={viewsAndOrdersData}
           
           series={[
-            {data:viewsAndOrdersData.map(e => e.viewCount), label:"View Count"},
-            {data:viewsAndOrdersData.map(e => e.orderCount), label:"Order Count"},
+            {curve:"bumpX", data:viewsAndOrdersData.map(e => e.viewCount), label:"View Count"},
+            {curve:"bumpX",data:viewsAndOrdersData.map(e => e.orderCount), label:"Order Count"},
 
           ]}
           xAxis={[{scaleType:'point', data:viewsAndOrdersData.map(e => e.date)}]}
