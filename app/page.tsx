@@ -22,11 +22,11 @@ export default async function Home() {
           image={ProdcutIcon}
         />     
       </div>
-       <div className='w-full flex gap-2 p-5 h-[50%]'>
+       <div className='w-full flex gap-4 p-5 h-[40%]'>
         <MostViewedItemsComponent/>
         <MostPurchasedItemsComponent/>
       </div>
-      <div className='w-full flex gap-2'>
+      <div className='w-full flex gap-2 px-5'>
         <ViewsAndOrdersByDateComponent/>
       </div>
     </div>
