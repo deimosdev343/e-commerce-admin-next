@@ -6,28 +6,28 @@ import storeManagementLogo from '../assets/management.png';
 import LinkBox from "../components/LinkBox";
 import { cookies } from "next/headers";
 import TopBar from "../components/TopBar";
+import MostViewedItemsComponent from "@/components/statistics/MostViewedItemsComponent";
+import MostPurchasedItemsComponent from "@/components/statistics/MostPurchasedItemsComponent";
+import ViewsAndOrdersByDateComponent from "@/components/statistics/ViewsAndOrdersByDateComponent";
 
 export default async function Home() {
 
   return (
     <div className="w-full h-screen flex flex-col items-center">
      <TopBar />
-      <div className="w-full md:w-[60%] grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
+      <div className="w-full flex items=center justify-center gap-5 p-5">
         <LinkBox  
-          title={"Products"}
+          title={"Go To Products"}
           link={'/products'}
           image={ProdcutIcon}
-        />
-        <LinkBox
-          title={"Statistics"}
-          link={'/stats'}
-          image={GrowthIcon}
-        />
-        <LinkBox
-          title={"Departments"}
-          link={'/category'}
-          image={GrowthIcon}
-        />
+        />     
+      </div>
+       <div className='w-full flex gap-2 p-5 h-[50%]'>
+        <MostViewedItemsComponent/>
+        <MostPurchasedItemsComponent/>
+      </div>
+      <div className='w-full flex gap-2'>
+        <ViewsAndOrdersByDateComponent/>
       </div>
     </div>
   );

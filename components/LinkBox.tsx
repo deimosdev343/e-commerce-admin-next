@@ -6,7 +6,7 @@ const LinkBox = ({title, link, image} : {title: string, link: string, image:stri
 
   return (
     <Link href={link}
-      className=' rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-600
+      className=' rounded-xl bg-slate-800 w-[50%] hover:bg-slate-700 active:bg-slate-600
         transition-all h-auto p-5 flex flex-col border-2 border-white hover:cursor-pointer items-center'
     >
       <h2 className='text-white text-2xl font-bold'>{title}</h2>
