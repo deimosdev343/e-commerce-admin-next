@@ -65,9 +65,7 @@ const MostViewedItemsComponent = () => {
           }}
         />
       </div>
-      <button className="text-white font-bold bg-slate-700 rounded-lg p-2 shadow-xl">
-        Expand
-      </button>
+     
     </div>
   )
 }
