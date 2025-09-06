@@ -30,15 +30,15 @@ const MostViewedItemsComponent = () => {
 
   if(loading) {
     return (
-      <div className="w-[50%] h-[100%] p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
-        <h2 className="text-xl text-white font-bold">Top Views</h2>
+      <div className="w-[50%] h-[100%] p-5 flex flex-col items-center justify-center shadow-xl bg-white rounded-lg border-2">
+        <h2 className="text-xl  font-bold">Top Views</h2>
         Loading...
       </div>
     ) 
   }
   return (
-    <div className="w-[50%] h-full p-5 flex flex-col items-center justify-center shadow-xl bg-slate-600 rounded-lg border-2">
-      <h2 className="text-xl text-white font-bold">Top Views</h2>
+    <div className="w-[50%] h-full p-5 flex flex-col items-center justify-center shadow-xl bg-white rounded-lg border-2">
+      <h2 className="text-xl  font-bold">Top Views</h2>
       <div className="w-full min-h-[80%] flex flex-col">
         <BarChart
           xAxis={[
@@ -54,15 +54,6 @@ const MostViewedItemsComponent = () => {
               color:"#4d5bab"
             }
           ]}
-          sx={{
-            "& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
-              fill: "white", // your color here
-            },
-         
-            "& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
-              fill: "white",
-            },
-          }}
         />
       </div>
      
