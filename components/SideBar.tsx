@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Logout from '../assets/logout.png';
 import MainDashboardIcon from '../assets/dashboards.png';
 import Link from 'next/link';
+import Logo from '../assets/Logo.png';
 
 const SideBar = () => {
     const dispatch = useAppDispatch();
@@ -41,12 +42,18 @@ const SideBar = () => {
     }, [userData])
   
   return (
-    <div className="hidden md:flex bg-slate-600 w-[25%] md:w-[15%] h-screen  flex-col items-center border-r-2 border-black shadow-2xl">
-        <div className="w-[90%] p-3 pr-5 pl-5 flex flex-row justify-start items-start gap-3 border-b-2 border-gray-300">
-        <h2 className='font-bold text-white text-md'>
-          Shop 
-          Management
-        </h2>
+    <div className="hidden md:flex bg-white w-[25%] md:w-[15%] h-screen  flex-col items-center shadow-2xl">
+        <div className="w-full p-3 pr-5 pl-5 flex flex-row justify-start items-center gap-3   border-gray-300">
+          <Image
+            src={Logo}
+            alt=''
+            className='w-10'
+          />
+          <h2 className='font-bold text-black text-sm'>
+            Shop 
+            Management
+          </h2>
+          
       </div>
       <div className='w-full flex flex-col items-start p-8 gap-5'>
         <Link className='flex items-center gap-2' href={'/'}>
@@ -55,7 +62,7 @@ const SideBar = () => {
             alt="logo"
             className='w-8'
           />
-          <h2 className='font-bold text-white'>
+          <h2 className='font-bold text-black'>
             Dashboard
           </h2>
         </Link>
@@ -65,7 +72,7 @@ const SideBar = () => {
             alt="logo"
             className='w-8'
           />
-          <h2 className='font-bold text-white'>
+          <h2 className='font-bold text-black'>
             logout
           </h2>
         </button>
