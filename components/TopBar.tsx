@@ -43,13 +43,11 @@ const TopBar = () => {
 
   return (
     <div className='w-full flex items-center justify-between
-      p-2 h-[10%]  bg-slate-700 rounded-b-lg'
+      p-4 h-[10%]  bg-white rounded-b-lg border-2 shadow-lg'
     >
-      <div className='flex justify-start text-white'>
-        <h2 className='font-bold md:text-xl'> Hello, {userData.name}</h2>
-      </div>
-      <div className='hidden  md:flex justify-center items-center'>
-        <h2 className='font-bold text-white'>
+      
+      <div className='hidden md:flex justify-center items-center'>
+        <h2 className='font-bold text-black'>
           Management Dashboard
         </h2>
         <Image
@@ -58,7 +56,7 @@ const TopBar = () => {
           className='w-14'
         />
       </div>
-      <button className='flex items-center gap-2 text-white' onClick={logoutCall}>
+      <button className='flex items-center gap-2 text-black' onClick={logoutCall}>
       <h2>
         log out
       </h2>
