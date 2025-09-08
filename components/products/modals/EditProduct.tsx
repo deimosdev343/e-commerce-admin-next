@@ -167,7 +167,6 @@ const EditProduct = ({modalState, setModalState} :{
         colors: modalState.product?.colors,
         sizes: modalState.product?.sizes,
         extraImages: modalState.product?.extraImages
-
       }
       if(modalState.type === "Edit") {
         await axios.put(`/api/products`, {product:productToSend})
@@ -231,22 +230,22 @@ const EditProduct = ({modalState, setModalState} :{
   return (
     <Modal 
       show={modalState.show}
-      className='bg-black'
+      className='bg-gray-100'
       onClose={() => {
         setModalState((mdlstate: ProductType) =>  ({...mdlstate, show: false}));
       }}
     >
      <Modal.Header
-      className='bg-gray-600 border-b-0 shadow-xl'  
+      className='bg-gray-100 border-b-0 shadow-xl'  
 
      >
-      <p className='text-3xl font-bold text-white '>
+      <p className='text-3xl font-bold text-black '>
         Edit Product
       </p>
      </Modal.Header>
-     <Modal.Body className='bg-gray-600  shadow-xl'>
+     <Modal.Body className='bg-gray-100  shadow-xl'>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl text-white'>
+        <h2 className='font-bold text-2xl text-black'>
           Item Name
         </h2>
         <TextInput 
@@ -259,7 +258,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.nameError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl text-white'>
+        <h2 className='font-bold text-2xl text-black'>
           Description
         </h2>
         <Textarea
@@ -272,7 +271,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.descriptionError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl text-white'>
+        <h2 className='font-bold text-2xl text-black'>
           Price
         </h2>
         <TextInput 
@@ -285,7 +284,7 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.priceError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl text-white'>
+        <h2 className='font-bold text-2xl text-black'>
           Image
         </h2>
         <CldUploadWidget
@@ -324,13 +323,13 @@ const EditProduct = ({modalState, setModalState} :{
         <h2 className='text-red-500 font-bold'>{errorState.imageError}</h2>
       </div>
       <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
-        <h2 className='font-bold text-2xl text-white'>
+        <h2 className='font-bold text-2xl text-black'>
           Category
         </h2>
         <select
           name="category"
           id=""
-          className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full"
+          className=" rounded-md text-md  bg-gray-100 ring-1 ring-gray-400 text-black font-semibold w-full"
           defaultValue={modalState.product?.category}
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
@@ -343,7 +342,7 @@ const EditProduct = ({modalState, setModalState} :{
       </div>
       <div className="w-full flex flex-col justify-start items-center gap-1 p-2 border-slate-500 border-2 rounded-xl">
         <div className='w-full flex justify-center items-center relative'>
-          <h2 className="text-white text-xl font-bold">Extra Images</h2>
+          <h2 className="text-black text-xl font-bold">Extra Images</h2>
           <CldUploadWidget
             signatureEndpoint="/api/upload"
             onSuccess={({info, event}, { widget }) => {
@@ -392,7 +391,7 @@ const EditProduct = ({modalState, setModalState} :{
       </div>
       <div className='flex flex-col p-4 '>
         <div className='w-full flex items-center gap-2'>
-          <h2 className='font-bold text-2xl text-white'>
+          <h2 className='font-bold text-2xl text-black'>
             Colors
           </h2>
           <Image 
@@ -414,7 +413,7 @@ const EditProduct = ({modalState, setModalState} :{
             />
             <button
               onClick={onAddColor} 
-              className="p-2 bg-slate-700 text-white rounded-lg shadow-lg hover:bg-slate-600 transition-all"
+              className="p-2 bg-slate-700 text-black rounded-lg shadow-lg hover:bg-slate-600 transition-all"
             >
               Add Color
             </button> 
@@ -424,10 +423,10 @@ const EditProduct = ({modalState, setModalState} :{
           {modalState.product?.colors.map(clr => <ProductColor key={clr} color={clr} onRemoveColor={onRemoveColor}/>)}
         </div>
         <div className="w-full flex flex-col justify-start items-center gap-2 p-2 border-slate-500 border-2 rounded-xl">
-          <h2 className="text-white text-2xl font-bold">Sizes</h2>
+          <h2 className="text-black text-2xl font-bold">Sizes</h2>
           <div className="grid grid-cols-6 w-full items-center">
             {sizes.map( size => <div key={size} className="flex p-2 justify-center items-center gap-2">
-              <h2 className="text-white font-bold">{size}</h2>
+              <h2 className="text-black font-bold">{size}</h2>
               <input type="checkbox" className="" checked={modalState.product?.sizes.includes(size)} onChange={() => onAddRemoveSize(size)}/>
             </div>)}
           </div>
@@ -435,9 +434,9 @@ const EditProduct = ({modalState, setModalState} :{
         </div>
         <div className='w-full flex flex-col items-center'>
           <button
-            className='p-2 text-white font-bold 
-              bg-slate-800 rounded-lg m-2 hover:bg-slate-700 transition-all
-              border-white border-2'
+            className='p-2 text-black font-bold border-slate-400 border-2 
+              bg-white rounded-lg m-2 hover:bg-gray-100 transition-all
+              '
             onClick={() => submitProduct()}
           >
             Save
