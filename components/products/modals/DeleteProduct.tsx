@@ -34,9 +34,9 @@ const DeleteProduct = (
       }}
     >
       <Modal.Header
-        className='bg-gray-600 border-b-0 shadow-xl'
+        className='bg-white border-b-0 shadow-xl'
       >
-        <p className='text-3xl font-bold text-white '>
+        <p className='text-3xl font-bold text-black '>
           Delete this Product?
         </p>
       </Modal.Header>
@@ -44,13 +44,13 @@ const DeleteProduct = (
         <div className="w-full flex items-center flex-col">
           <div className="w-full flex items-center justify-between">
             <button
-              className="bg-slate-800 rounded-lg p-2 w-[45%] text-lg font-bold text-white"
+              className="bg-slate-800 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
               onClick={onDelete}
             >
               Yes
             </button>
             <button
-              className=" bg-slate-800 rounded-lg p-2 w-[45%] text-lg font-bold text-white"
+              className=" bg-slate-800 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
               onClick={() => {
                 setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
               }}
