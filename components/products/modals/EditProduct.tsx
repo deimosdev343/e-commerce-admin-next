@@ -230,7 +230,7 @@ const EditProduct = ({modalState, setModalState} :{
   return (
     <Modal 
       show={modalState.show}
-      className='bg-gray-100'
+      className='bg-black'
       onClose={() => {
         setModalState((mdlstate: ProductType) =>  ({...mdlstate, show: false}));
       }}
