@@ -40,17 +40,17 @@ const DeleteProduct = (
           Delete this Product?
         </p>
       </Modal.Header>
-      <Modal.Body className='bg-gray-600  shadow-xl'>
+      <Modal.Body className='bg-white  shadow-xl'>
         <div className="w-full flex items-center flex-col">
           <div className="w-full flex items-center justify-between">
             <button
-              className="bg-slate-800 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
+              className="bg-white border-2 border-slate-400 hover:bg-gray-100 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
               onClick={onDelete}
             >
               Yes
             </button>
             <button
-              className=" bg-slate-800 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
+              className=" bg-white border-2 border-slate-400 hover:bg-gray-100 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
               onClick={() => {
                 setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
               }}
