@@ -8,11 +8,13 @@ import Logout from '../assets/logout.png';
 import MainDashboardIcon from '../assets/dashboards.png';
 import Link from 'next/link';
 import Logo from '../assets/Logo.png';
+import Prds from '../assets/box.png';
 
 const SideBar = () => {
     const dispatch = useAppDispatch();
     const userData = useAppSelector(state=> state.userData);
     const router = useRouter();
+    
     const fetchAuth = async () => {
       try {
         const res = await axios.get(`/api/auth`);
@@ -64,6 +66,16 @@ const SideBar = () => {
           />
           <h2 className='font-bold text-black'>
             Dashboard
+          </h2>
+        </Link>
+        <Link className='flex items-center gap-2' href={'/Products'}>
+          <Image
+            src={Prds}
+            alt="logo"
+            className='w-8'
+          />
+          <h2 className='font-bold text-black'>
+            Products
           </h2>
         </Link>
         <button className='flex items-center gap-2' onClick={logoutCall}>
