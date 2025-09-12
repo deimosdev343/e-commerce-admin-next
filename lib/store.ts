@@ -34,7 +34,7 @@ const posDataSlice = createSlice({
   initialState: initialPositionState,
   reducers: {
     setPostion(state, action: PayloadAction<{pos: string}>) {
-      state ={pos: action.payload.pos};
+      state = {pos: action.payload.pos};
       return state;
     }
   }
@@ -42,7 +42,8 @@ const posDataSlice = createSlice({
 export const makeStore = () => {
   return configureStore({
     reducer:{
-      userData: userDataSlice.reducer
+      userData: userDataSlice.reducer,
+      posData: posDataSlice.reducer
     }
   })
 }
