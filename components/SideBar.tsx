@@ -13,6 +13,8 @@ import Prds from '../assets/box.png';
 const SideBar = () => {
     const dispatch = useAppDispatch();
     const userData = useAppSelector(state=> state.userData);
+    const posData = useAppSelector(state => state.posData);
+
     const router = useRouter();
     
     const fetchAuth = async () => {
@@ -58,7 +60,7 @@ const SideBar = () => {
           
       </div>
       <div className='w-full flex flex-col items-start p-8 gap-5'>
-        <Link className='flex items-center gap-2' href={'/'}>
+        <Link className='flex items-center gap-2 rounded-lg w-full px-2 py-2' href={'/'}>
           <Image
             src={MainDashboardIcon}
             alt="logo"
@@ -68,7 +70,7 @@ const SideBar = () => {
             Dashboard
           </h2>
         </Link>
-        <Link className='flex items-center gap-2' href={'/Products'}>
+        <Link className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "products" && "bg-gray-100 border-2 border-slate-300 "}`} href={'/Products'}>
           <Image
             src={Prds}
             alt="logo"
@@ -78,7 +80,7 @@ const SideBar = () => {
             Products
           </h2>
         </Link>
-        <button className='flex items-center gap-2' onClick={logoutCall}>
+        <button className='flex items-center gap-2 rounded-lg w-full px-2 py-2' onClick={logoutCall}>
           <Image
             src={Logout}
             alt="logo"
