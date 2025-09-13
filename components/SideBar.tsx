@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
-import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store';
+import { loginUser, logoutUser, setPostion, useAppDispatch, useAppSelector } from '../lib/store';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
@@ -60,7 +60,12 @@ const SideBar = () => {
           
       </div>
       <div className='w-full flex flex-col items-start p-8 gap-5'>
-        <Link className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}>
+        <Link 
+          onClick={() => {
+            dispatch(setPostion({pos:""}))
+          }}
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
+        >
           <Image
             src={MainDashboardIcon}
             alt="logo"
@@ -70,7 +75,12 @@ const SideBar = () => {
             Dashboard
           </h2>
         </Link>
-        <Link className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/Products'}>
+        <Link
+          onClick={() => {
+            dispatch(setPostion({pos:"products"}))
+          }} 
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
+        >
           <Image
             src={Prds}
             alt="logo"
