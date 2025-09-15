@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
-import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store';
+import { loginUser, logoutUser, setPostion, useAppDispatch, useAppSelector } from '../lib/store';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
@@ -8,11 +8,15 @@ import Logout from '../assets/logout.png';
 import MainDashboardIcon from '../assets/dashboards.png';
 import Link from 'next/link';
 import Logo from '../assets/Logo.png';
+import Prds from '../assets/box.png';
 
 const SideBar = () => {
     const dispatch = useAppDispatch();
     const userData = useAppSelector(state=> state.userData);
+    const posData = useAppSelector(state => state.posData);
+
     const router = useRouter();
+    
     const fetchAuth = async () => {
       try {
         const res = await axios.get(`/api/auth`);
@@ -56,7 +60,12 @@ const SideBar = () => {
           
       </div>
       <div className='w-full flex flex-col items-start p-8 gap-5'>
-        <Link className='flex items-center gap-2' href={'/'}>
+        <Link 
+          onClick={() => {
+            dispatch(setPostion({pos:""}))
+          }}
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
+        >
           <Image
             src={MainDashboardIcon}
             alt="logo"
@@ -66,7 +75,22 @@ const SideBar = () => {
             Dashboard
           </h2>
         </Link>
-        <button className='flex items-center gap-2' onClick={logoutCall}>
+        <Link
+          onClick={() => {
+            dispatch(setPostion({pos:"products"}))
+          }} 
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
+        >
+          <Image
+            src={Prds}
+            alt="logo"
+            className='w-8'
+          />
+          <h2 className='font-bold text-black'>
+            Products
+          </h2>
+        </Link>
+        <button className='flex items-center gap-2 rounded-lg w-full px-2 py-2 hover:bg-gray-50' onClick={logoutCall}>
           <Image
             src={Logout}
             alt="logo"
