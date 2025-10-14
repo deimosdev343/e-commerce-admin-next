@@ -1,7 +1,8 @@
 "use client"
+
 import React, { useEffect } from 'react'
 import { loginUser, logoutUser, setPostion, useAppDispatch, useAppSelector } from '../lib/store';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
 import Logout from '../assets/logout.png';
@@ -13,8 +14,8 @@ import Prds from '../assets/box.png';
 const SideBar = () => {
     const dispatch = useAppDispatch();
     const userData = useAppSelector(state=> state.userData);
-    const posData = useAppSelector(state => state.posData);
-
+    const pathname = usePathname();
+    console.log(`pathname: ${pathname}`);
     const router = useRouter();
     
     const fetchAuth = async () => {
@@ -64,7 +65,7 @@ const SideBar = () => {
           onClick={() => {
             dispatch(setPostion({pos:""}))
           }}
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
         >
           <Image
             src={MainDashboardIcon}
@@ -79,7 +80,7 @@ const SideBar = () => {
           onClick={() => {
             dispatch(setPostion({pos:"products"}))
           }} 
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
         >
           <Image
             src={Prds}
