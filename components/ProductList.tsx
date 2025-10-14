@@ -7,6 +7,7 @@ import ProductBox from './products/ProductBox'
 import TopBarProductList from './products/TopBarProductList'
 import EditProduct from './products/modals/EditProduct'
 import DeleteProduct from './products/modals/DeleteProduct'
+import FeatureProduct from './products/modals/FeatureProduct'
 
 const ProductList = () => {
   const [productParams, setProductParams] = useState({
@@ -20,8 +21,7 @@ const ProductList = () => {
     show: boolean | undefined, 
     product: ProductType | null, 
     type: "Edit" | "Create" }
-  >
-  ({
+  >({
     show: false,
     product: null,
     type:"Create"
@@ -30,13 +30,20 @@ const ProductList = () => {
   const [productDeleteModal, setProductDeleteModal] = useState<{
     show: boolean | undefined,
     id:string
-  }>
-  ({
+  }>({
     show: false,
     id: ""
   });
   
-  
+  const [productFeatureModal, setProductFeatureModal] = useState<{
+    show: boolean | undefined,
+    id:string,
+    featured: boolean
+  }>({
+    show: false,
+    id: "",
+    featured: false
+  });
   
   const createItemFunc = async () => {
     setProductParams(prms =>  ({
@@ -90,12 +97,14 @@ const ProductList = () => {
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <DeleteProduct modalState={productDeleteModal} setModalState={setProductDeleteModal}/>
       <EditProduct modalState={productEditModal} setModalState={setProductEditmodal}/>
+      <FeatureProduct modalState={productFeatureModal} setModalState={setProductFeatureModal}/>
       <TopBarProductList params={productParams} setParams={setProductParams} createItemFunc={createItemFunc}/>
       {products.map(prd => <ProductBox 
         key={prd._id}
         product={prd} 
         setEditModal={setProductEditmodal} 
         setDeleteModal={setProductDeleteModal}
+        setProductFeatureModal={setProductFeatureModal}
       />)} 
     </div>
   )

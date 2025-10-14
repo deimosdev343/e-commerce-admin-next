@@ -9,7 +9,8 @@ export interface ProductType {
   name: string,
   price: number,
   sizes: Array<string>
-  updatedAt?: string
+  updatedAt?: string,
+  featured?: boolean
 }
 
 export interface ProductStateType {
