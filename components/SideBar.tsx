@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect } from 'react'
-import { loginUser, logoutUser, setPostion, useAppDispatch, useAppSelector } from '../lib/store';
+import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store';
 import { usePathname, useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
@@ -62,9 +62,6 @@ const SideBar = () => {
       </div>
       <div className='w-full flex flex-col items-start p-8 gap-5'>
         <Link 
-          onClick={() => {
-            dispatch(setPostion({pos:""}))
-          }}
           className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
         >
           <Image
@@ -76,10 +73,7 @@ const SideBar = () => {
             Dashboard
           </h2>
         </Link>
-        <Link
-          onClick={() => {
-            dispatch(setPostion({pos:"products"}))
-          }} 
+        <Link 
           className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
         >
           <Image
