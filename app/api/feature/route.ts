@@ -10,7 +10,7 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
     const featureData = await axios.put(`${process.env.BACKEND_API}/products/featured`,
       {
         id:productId,
-        feature,
+        featured: feature,
       },
       {
         headers:{

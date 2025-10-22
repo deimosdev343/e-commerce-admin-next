@@ -16,7 +16,7 @@ const FeatureProduct = (
   
   const updateFeatureProductCall = async () => {
     try {
-        await axios.put(`/api/feature`, {id:modalState.id, feature: !modalState.featured});
+        await axios.put(`/api/feature`, {productId:modalState.id, feature: !modalState.featured});
     } catch (err) {
       console.log(err);
     }
