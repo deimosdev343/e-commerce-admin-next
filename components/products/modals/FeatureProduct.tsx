@@ -14,6 +14,13 @@ const FeatureProduct = (
   {modalState: modalStateType, setModalState: Function}
 ) => {
   
+  const updateFeatureProductCall = async () => {
+    try {
+        await axios.put(`/api/feature`, {id:modalState.id, feature: !modalState.featured});
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
      <Modal 
         show={modalState.show}
@@ -34,7 +41,10 @@ const FeatureProduct = (
           <div className="w-full flex items-center justify-between">
             <button
               className="bg-white border-2 border-slate-400 hover:bg-gray-100 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
-              onClick={() => {}}
+              onClick={ async () => {
+                await updateFeatureProductCall();
+                setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
+              }}
             >
               Yes
             </button>

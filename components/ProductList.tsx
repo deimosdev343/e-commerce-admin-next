@@ -86,10 +86,10 @@ const ProductList = () => {
     }
   }
   useEffect(() => {
-    if(!productEditModal.show && !productDeleteModal.show) {
+    if(!productEditModal.show && !productDeleteModal.show && !productFeatureModal.show) {
       fetchData(); 
     }
-  }, [productParams,productEditModal, productDeleteModal]);
+  }, [productParams,productEditModal, productDeleteModal, productFeatureModal]);
 
   const [products, setProducts] = useState<Array<ProductType>>([]);
 
