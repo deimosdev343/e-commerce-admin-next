@@ -335,7 +335,7 @@ const EditProduct = ({modalState, setModalState} :{
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, category: e.target.value}}))}
         >
-          <option value={""}>"None"</option>
+          {!modalState.product?.category && <option hidden value={""}>Pick a category...</option>}
           {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
         <h2 className='text-red-500 font-bold'>{errorState.categoryError}</h2>
