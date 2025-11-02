@@ -249,7 +249,7 @@ const EditProduct = ({modalState, setModalState} :{
           Item Name
         </h2>
         <TextInput 
-          className="w-full font-semibold bg-white"
+          className="w-full font-semibold bg-white border-2 rounded-xl border-slate-300"
           value={modalState.product?.name} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
@@ -262,7 +262,7 @@ const EditProduct = ({modalState, setModalState} :{
           Description
         </h2>
         <Textarea
-          className="w-full font-semibold bg-white"
+          className="w-full font-semibold bg-white border-2 rounded-xl border-slate-300"
           value={modalState.product?.description} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
@@ -275,7 +275,7 @@ const EditProduct = ({modalState, setModalState} :{
           Price
         </h2>
         <TextInput 
-          className="w-full font-semibold bg-white"
+          className="w-full font-semibold bg-white border-2 rounded-xl border-slate-300"
           value={modalState.product?.price} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
