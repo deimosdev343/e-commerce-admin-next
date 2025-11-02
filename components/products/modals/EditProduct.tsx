@@ -249,7 +249,7 @@ const EditProduct = ({modalState, setModalState} :{
           Item Name
         </h2>
         <TextInput 
-          className="w-full font-semibold"
+          className="w-full font-semibold bg-white"
           value={modalState.product?.name} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
@@ -262,7 +262,7 @@ const EditProduct = ({modalState, setModalState} :{
           Description
         </h2>
         <Textarea
-          className="w-full font-semibold"
+          className="w-full font-semibold bg-white"
           value={modalState.product?.description} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
@@ -275,7 +275,7 @@ const EditProduct = ({modalState, setModalState} :{
           Price
         </h2>
         <TextInput 
-          className="w-full font-semibold"
+          className="w-full font-semibold bg-white"
           value={modalState.product?.price} 
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
@@ -329,14 +329,14 @@ const EditProduct = ({modalState, setModalState} :{
         <select
           name="category"
           id=""
-          className=" rounded-md text-md  bg-gray-100 ring-1 ring-gray-400 text-black font-semibold w-full"
+          className=" rounded-md text-md  bg-white ring-1 ring-gray-400 text-black font-semibold w-full"
           defaultValue={modalState.product?.category}
           onChange={(e) => setModalState((
             mdlstate: modalStateType ) => (
               {...mdlstate, product: {...mdlstate.product, category: e.target.value}}))}
         >
-          {!modalState.product?.category && <option hidden value={""}>Pick a category...</option>}
-          {categories.map((cat: categoryType) => <option key={cat._id} value={cat.name}>{cat.name}</option>)}
+          {!modalState.product?.category && <option className='bg-white' hidden value={""}>Pick a category...</option>}
+          {categories.map((cat: categoryType) => <option className='bg-white' key={cat._id} value={cat.name}>{cat.name}</option>)}
         </select>
         <h2 className='text-red-500 font-bold'>{errorState.categoryError}</h2>
       </div>
