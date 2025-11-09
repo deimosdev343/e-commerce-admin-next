@@ -9,11 +9,14 @@ import Image from 'next/image'
 const ProductBox = ({
   product, 
   setEditModal,
-  setDeleteModal
+  setDeleteModal,
+  setProductFeatureModal
 } : {
   product: ProductType, 
   setEditModal: Function,
-  setDeleteModal: Function}) => {
+  setDeleteModal: Function
+  setProductFeatureModal: Function
+}) => {
   const [fallback, setFallback] = useState<boolean>(false);
   return (
    <div className="p-5 flex w-[99%] items-center bg-white rounded-xl border-2 shadow-md">
@@ -83,6 +86,21 @@ const ProductBox = ({
           }}
           >
           Delete Item
+       </button>
+       <button 
+          className='
+            w-[60%] border-2 border-slate-400 bg-white p-2 
+            rounded-lg font-bold text-2xl shadow-lg
+          text-black hover:bg-slate-100'
+          onClick={() => {
+            setProductFeatureModal({
+              id: product._id,
+              show: true,
+              featured: product.featured
+            });
+          }}
+          >
+          Feature Item
        </button>
       </div>
     </div>

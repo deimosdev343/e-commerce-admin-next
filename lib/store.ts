@@ -6,9 +6,6 @@ const initialUserData : UserData = {
   loggedIn: false
 }
 
-const initialPositionState : {pos: string} = {
-  pos:""
-}
 
 
 const userDataSlice = createSlice({
@@ -29,27 +26,17 @@ const userDataSlice = createSlice({
   }
 });
 
-const posDataSlice = createSlice({
-  name:"posData",
-  initialState: initialPositionState,
-  reducers: {
-    setPostion(state, action: PayloadAction<{pos: string}>) {
-      state = {pos: action.payload.pos};
-      return state;
-    }
-  }
-})
+
 export const makeStore = () => {
   return configureStore({
     reducer:{
       userData: userDataSlice.reducer,
-      posData: posDataSlice.reducer
+      
     }
   })
 }
 
 export const {loginUser, logoutUser} = userDataSlice.actions;
-export const {setPostion} = posDataSlice.actions;
 
 export type AppStore = ReturnType<typeof makeStore>
 export type RootState = ReturnType<AppStore['getState']>

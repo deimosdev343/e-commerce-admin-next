@@ -1,7 +1,8 @@
 "use client"
+
 import React, { useEffect } from 'react'
-import { loginUser, logoutUser, setPostion, useAppDispatch, useAppSelector } from '../lib/store';
-import { useRouter } from 'next/navigation';
+import { loginUser, logoutUser, useAppDispatch, useAppSelector } from '../lib/store';
+import { usePathname, useRouter } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
 import Logout from '../assets/logout.png';
@@ -9,12 +10,13 @@ import MainDashboardIcon from '../assets/dashboards.png';
 import Link from 'next/link';
 import Logo from '../assets/Logo.png';
 import Prds from '../assets/box.png';
+import FeaturedIcon from '../assets/star.png';
 
 const SideBar = () => {
     const dispatch = useAppDispatch();
     const userData = useAppSelector(state=> state.userData);
-    const posData = useAppSelector(state => state.posData);
-
+    const pathname = usePathname();
+    console.log(`pathname: ${pathname}`);
     const router = useRouter();
     
     const fetchAuth = async () => {
@@ -61,10 +63,7 @@ const SideBar = () => {
       </div>
       <div className='w-full flex flex-col items-start p-8 gap-5'>
         <Link 
-          onClick={() => {
-            dispatch(setPostion({pos:""}))
-          }}
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
         >
           <Image
             src={MainDashboardIcon}
@@ -75,11 +74,8 @@ const SideBar = () => {
             Dashboard
           </h2>
         </Link>
-        <Link
-          onClick={() => {
-            dispatch(setPostion({pos:"products"}))
-          }} 
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${posData.pos === "products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
+        <Link 
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
         >
           <Image
             src={Prds}
@@ -88,6 +84,18 @@ const SideBar = () => {
           />
           <h2 className='font-bold text-black'>
             Products
+          </h2>
+        </Link>
+        <Link 
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/featured" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/featured'}
+        >
+          <Image
+            src={FeaturedIcon}
+            alt="logo"
+            className='w-8'
+          />
+          <h2 className='font-bold text-black'>
+            featured
           </h2>
         </Link>
         <button className='flex items-center gap-2 rounded-lg w-full px-2 py-2 hover:bg-gray-50' onClick={logoutCall}>
