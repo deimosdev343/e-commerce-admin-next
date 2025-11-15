@@ -20,7 +20,9 @@ const DiscountHeader = ({
   createDiscountFunc: Function
 }) => {
   return (
-    <div>DiscountHeader</div>
+    <div className='w-[99%] p-2 flex flex-col rounded-lg  bg-white shadow-lg border-2 border-gray-200'>
+      
+    </div>
   )
 }
 

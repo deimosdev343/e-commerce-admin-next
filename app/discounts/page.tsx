@@ -1,8 +1,11 @@
+import DiscountList from '@/components/discounts/DiscountList'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div className='w-full h-screen'>
+      <DiscountList/>     
+    </div>
   )
 }
 
