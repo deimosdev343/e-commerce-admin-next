@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import DiscountHeader from './DiscountHeader'
 import { discountType } from '@/types/DiscountType';
-import AddEditDiscountModal from './modals/addEditDiscountModal';
+import AddEditDiscountModal from './modals/AddEditDiscountModal';
 
 
 interface ParamsObj  {
@@ -36,7 +36,7 @@ const DiscountList = () => {
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <AddEditDiscountModal modalState={discountAddEditModal} setModalState={setDiscountAddEditModal}/>
-      <DiscountHeader 
+      <DiscountHeader
         params={searchParams} 
         setParams={setSearchParams}
         createDiscountFunc={() => {
