@@ -1,6 +1,7 @@
 import { discountType } from '@/types/DiscountType'
-import { Modal, Textarea, TextInput } from 'flowbite-react'
+import { Datepicker, Modal, Textarea, TextInput } from 'flowbite-react'
 import React from 'react'
+import dayjs from 'dayjs';
 
 interface modalStateType {
   show: boolean | undefined,
@@ -13,6 +14,8 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
     modalState: modalStateType,
     setModalState: Function
 }) => {
+  const currDate = dayjs().format('DD/MM/YYYY');
+
 
   return (
     <Modal
@@ -29,7 +32,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
           Edit Discount
         </p>
       </Modal.Header>
-      <Modal.Body className='bg-gray-100  shadow-xl'>
+      <Modal.Body className='bg-gray-100  shadow-xl min-h-[80vh]'>
         <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
           <p className='text-xl font-bold text-black '>
             Description
@@ -42,6 +45,26 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
                 {...mdlstate, discount: {...mdlstate.discount, description: e.target.value}}))}
           />
         </div>
+        <div className="w-full flex items-center p-2 gap-2">
+          <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+            <p className='text-xl font-bold text-black'>
+              Start Date
+            </p>
+            <Datepicker
+              style={{zIndex:99999}}
+            />
+          </div>
+          <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+            <p className='text-xl font-bold text-black'>
+              End Date
+            </p>
+            <Datepicker
+              style={{zIndex:99999}}
+            />
+          </div>
+          
+        </div>
+
       </Modal.Body>
     </Modal>
   )
