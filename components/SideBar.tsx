@@ -87,7 +87,7 @@ const SideBar = () => {
           </h2>
         </Link>
         <Link 
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/featured" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/featured'}
+          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/discounts" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/discounts'}
         >
           <Image
             src={FeaturedIcon}
@@ -95,7 +95,7 @@ const SideBar = () => {
             className='w-8'
           />
           <h2 className='font-bold text-black'>
-            featured
+            Discounts
           </h2>
         </Link>
         <button className='flex items-center gap-2 rounded-lg w-full px-2 py-2 hover:bg-gray-50' onClick={logoutCall}>
