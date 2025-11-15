@@ -41,6 +41,14 @@ const DiscountHeader = ({
           Search
         </button>
       </div>
+      <div className='w-full flex p-2 justify-between px-5'>
+        <button 
+          className='rounded-md shadow-md text-black font-bold w-[18%] p-2 border-2 border-slate-400 text-2xl hover:bg-slate-100'
+          onClick={() => createDiscountFunc()}
+        >
+          Add Discount
+        </button>
+      </div>
     </div>
   )
 }
