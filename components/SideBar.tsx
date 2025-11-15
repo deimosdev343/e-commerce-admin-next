@@ -63,7 +63,7 @@ const SideBar = () => {
       </div>
       <div className='w-full flex flex-col items-start p-8 gap-5'>
         <Link 
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
+          className={`flex items-center gap-2 rounded-lg w-full px-1 py-2 ${pathname === "/" ? "bg-gray-100 border-2 border-slate-300 " : "hover:bg-gray-50"}`} href={'/'}
         >
           <Image
             src={MainDashboardIcon}
@@ -75,7 +75,7 @@ const SideBar = () => {
           </h2>
         </Link>
         <Link 
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
+          className={`flex items-center gap-2 rounded-lg w-full px-1 py-2 ${pathname === "/products" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/products'}
         >
           <Image
             src={Prds}
@@ -87,7 +87,7 @@ const SideBar = () => {
           </h2>
         </Link>
         <Link 
-          className={`flex items-center gap-2 rounded-lg w-full px-2 py-2 ${pathname === "/discounts" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/discounts'}
+          className={`flex items-center gap-2 rounded-lg w-full px-1 py-2 ${pathname === "/discounts" ? "bg-gray-100 border-2 border-slate-300 " :"hover:bg-gray-50"}`} href={'/discounts'}
         >
           <Image
             src={FeaturedIcon}
@@ -98,7 +98,7 @@ const SideBar = () => {
             Discounts
           </h2>
         </Link>
-        <button className='flex items-center gap-2 rounded-lg w-full px-2 py-2 hover:bg-gray-50' onClick={logoutCall}>
+        <button className='flex items-center gap-2 rounded-lg w-full px-1 py-2 hover:bg-gray-50' onClick={logoutCall}>
           <Image
             src={Logout}
             alt="logo"
