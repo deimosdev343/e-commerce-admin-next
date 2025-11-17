@@ -13,7 +13,6 @@ const LinkBox = ({title, link, image} : {title: string, link: string, image:stri
   return (
     <div
       onClick={onClick} 
-      
       className=' rounded-xl bg-white w-[50%] hover:bg-gray-200 active:bg-slate-100 shadow-lg
         transition-all h-auto p-5 flex flex-col border-2 border-white hover:cursor-pointer items-center'
     >

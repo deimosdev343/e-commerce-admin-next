@@ -16,7 +16,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
 }) => {
   const currDate = dayjs().format('DD/MM/YYYY');
 
-
+  console.log(modalState.discount);
   return (
     <Modal
       show={modalState.show}
@@ -52,6 +52,9 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
             </p>
             <Datepicker
               value={modalState.discount?.startDate}
+              onChange={(date: Date | null) => {
+                setModalState((mdlState: modalStateType) => ({...mdlState,discount: {...mdlState.discount, startDate: date}}))
+              }}
             />
           </div>
           <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
@@ -60,7 +63,9 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
             </p>
             <Datepicker
               value={modalState.discount?.endDate}
-              
+              onChange={(date: Date | null) => {
+                setModalState((mdlState: modalStateType) => ({...mdlState,discount: {...mdlState.discount, endDate: date}}))
+              }}
             />
           </div>
           
