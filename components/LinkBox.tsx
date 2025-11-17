@@ -1,15 +1,13 @@
 "use client"
-import { setPostion, useAppDispatch } from '@/lib/store';
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 
 const LinkBox = ({title, link, image} : {title: string, link: string, image:string | StaticImageData})  => {
-  const dispatch = useAppDispatch();
+  
   const router = useRouter();
   const onClick = () => {
-    dispatch(setPostion({pos: "products"}));
     router.push(link)
   }
   return (

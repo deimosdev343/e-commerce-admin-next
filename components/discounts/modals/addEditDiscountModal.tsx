@@ -51,7 +51,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
               Start Date
             </p>
             <Datepicker
-              style={{zIndex:99999}}
+              value={modalState.discount?.startDate}
             />
           </div>
           <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
@@ -59,7 +59,8 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
               End Date
             </p>
             <Datepicker
-              style={{zIndex:99999}}
+              value={modalState.discount?.endDate}
+              
             />
           </div>
           
