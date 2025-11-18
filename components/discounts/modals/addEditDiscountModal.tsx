@@ -9,6 +9,11 @@ interface modalStateType {
   type: "Edit" | "Create" 
 }
 
+const backgrounds = [
+  "bg-gradient-to-r from-yellow-50 to-pink-50",
+  "bg-gradient-to-r from-pink-50 to-blue-50",
+  "bg-gradient-to-r  from-blue-50 to-yellow-50"
+]
 
 const AddEditDiscountModal = ({modalState, setModalState}:{
     modalState: modalStateType,
@@ -16,7 +21,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
 }) => {
   const currDate = dayjs().format('DD/MM/YYYY');
 
-  console.log(modalState.discount);
+
   return (
     <Modal
       show={modalState.show}
@@ -68,7 +73,9 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
               }}
             />
           </div>
-          
+        </div>
+        <div className='w-full flex flex-col justify-start items-start p-2 gap-2'>
+
         </div>
 
       </Modal.Body>
