@@ -76,13 +76,17 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
             />
           </div>
         </div>
-        <div className='w-full h-[200px] grid grid-cols-3 gap-2 '>
-          {backgrounds.map((bg,index) => <div key={index} className={`${bg} p-5 w-full`}>
-            <input
-              type='radio'
+        <div className="w-full flex flex-col  p-2 gap-2">
+          <h2 className='text-black font-bold text-lg'>Image Background</h2>
+          <div className='w-full  grid grid-cols-3 gap-2 '>
+            {backgrounds.map((bg,index) => <div key={index} className={`${bg} p-5 w-full rounded-2xl border-gray-300 border-2`}>
+              <input
+                type='radio'
 
-            />
-          </div>)}
+              />
+            </div>)}
+          </div>
+
         </div>
 
       </Modal.Body>
