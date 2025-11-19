@@ -82,6 +82,10 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
             {backgrounds.map((bg,index) => <div key={index} className={`${bg} p-5 w-full rounded-2xl border-gray-300 border-2`}>
               <input
                 type='radio'
+                onChange={() => {
+                  setModalState((mdlState: modalStateType) => ({...mdlState, discount: {...mdlState.discount, background: bg}}))
+                }}
+                checked={bg == modalState.discount?.background}
 
               />
             </div>)}
