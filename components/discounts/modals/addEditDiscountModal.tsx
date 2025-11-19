@@ -1,3 +1,5 @@
+"use client"
+
 import { discountType } from '@/types/DiscountType'
 import { Datepicker, Modal, Textarea, TextInput } from 'flowbite-react'
 import React from 'react'
@@ -64,7 +66,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
           </div>
           <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
             <p className='text-xl font-bold text-black'>
-              End Date
+              End Date 
             </p>
             <Datepicker
               value={modalState.discount?.endDate}
@@ -74,8 +76,13 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
             />
           </div>
         </div>
-        <div className='w-full flex flex-col justify-start items-start p-2 gap-2'>
+        <div className='w-full h-[200px] grid grid-cols-3 gap-2 '>
+          {backgrounds.map((bg,index) => <div key={index} className={`${bg} p-5 w-full`}>
+            <input
+              type='radio'
 
+            />
+          </div>)}
         </div>
 
       </Modal.Body>

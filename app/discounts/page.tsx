@@ -1,3 +1,4 @@
+"use client"
 import DiscountList from '@/components/discounts/DiscountList'
 import React from 'react'
 
