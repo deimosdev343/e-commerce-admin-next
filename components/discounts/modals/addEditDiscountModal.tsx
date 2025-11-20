@@ -3,7 +3,7 @@ import UploadImageIcon from '../../../assets/photo.png';
 
 import { discountType } from '@/types/DiscountType'
 import { Datepicker, Modal, Textarea, TextInput } from 'flowbite-react'
-import React from 'react'
+import React, { useState } from 'react'
 import dayjs from 'dayjs';
 import { CldUploadWidget, CloudinaryUploadWidgetInfo } from 'next-cloudinary';
 import Image from 'next/image';
@@ -27,6 +27,47 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
   const currDate = dayjs().format('DD/MM/YYYY');
 
 
+
+
+  const submitData = async () => {
+    try {
+      if(!modalState.discount?.description) {
+        setError("Description is Required");
+        setTimeout(() => {
+          setError("");
+        },3000)
+      }
+      if(!modalState.discount?.startDate) {
+        setError("Start date is required");
+        setTimeout(() => {
+          setError("");
+        },3000)
+      }
+      if(!modalState.discount?.endDate) {
+        setError("End date is required");
+        setTimeout(() => {
+          setError("");
+        },3000)
+      }
+      if(!modalState.discount?.image) {
+        setError("Image is required");
+        setTimeout(() => {
+          setError("");
+        },3000)
+      }
+      if(!modalState.discount?.background) {
+        setError("background is required");
+        setTimeout(() => {
+          setError("");
+        },3000)
+      }
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const [error, setError] = useState<string>("");
   return (
     <Modal
       show={modalState.show}
@@ -157,9 +198,19 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
               />
             </div>)}
           </div>
-
+          
         </div>
-
+        <div className='w-full flex flex-col items-center'>
+          <button
+            className='p-2 text-black font-bold border-slate-400 border-2 
+              bg-white rounded-lg m-2 hover:bg-gray-100 transition-all
+              '
+            onClick={() => submitData()}
+          >
+            Save
+          </button>
+          <h2 className='text-red-500 font-bold'>{error}</h2>     
+        </div>
       </Modal.Body>
     </Modal>
   )
