@@ -117,6 +117,32 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
                 {...mdlstate, discount: {...mdlstate.discount, image: e.target.value}}))}
           />
         </div>
+        <div className="w-full flex flex-col justify-start items-start p-2 gap-2">
+          <h2 className='font-bold text-2xl text-black'>
+            Discount Amount
+          </h2>
+          <p className='font-semibold text-gray-600'>(accepts values between 1 and 99)</p>
+          <TextInput
+            className=' w-full font-semibold'
+            value={!modalState.discount?.discountAmount ? 0 : modalState.discount?.discountAmount}
+            type='number'
+
+            onChange={(e) => {
+              const num = parseInt(e.target.value);
+              if(num < 0) {
+                setModalState((mdlState: modalStateType ) => ({...mdlState, discount: {...mdlState.discount, discountAmount: 1}}))
+              }
+              else if(num > 99) {
+                setModalState((mdlState: modalStateType ) => ({...mdlState, discount: {...mdlState.discount, discountAmount: 99}}))
+              } 
+              else {
+                setModalState((mdlState: modalStateType ) => ({...mdlState, discount: {...mdlState.discount, discountAmount: num}}))
+
+              }
+
+            }}
+          />
+        </div>
         <div className="w-full flex flex-col  p-2 gap-2">
           <h2 className='text-black font-bold text-lg'>Image Background</h2>
           <div className='w-full  grid grid-cols-3 gap-2 '>
