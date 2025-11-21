@@ -35,3 +35,33 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     );
   }
 }
+
+export const GET = async (req: NextRequest, res: NextResponse) => {
+ try {
+    const searchParams = req.nextUrl.searchParams;
+    const cks = await cookies();
+    const token =  cks.get("token")?.value;
+    const discountData = await axios.get(
+      `${process.env.BACKEND_API}/products`,
+      {
+        params:{
+          startDate: searchParams.get("startDate"),
+          endDate: searchParams.get("endDate"),
+          limit: 10,
+          description: searchParams.get("description") 
+        }
+      }
+    );
+    console.log(discountData.data)
+    return NextResponse.json(
+      discountData.data,
+      {status:200}
+    );
+ } catch (err) {
+    console.log(err);
+    return NextResponse.json(
+      {msg:"Internal Server Error"}, 
+      {status:500}
+    );
+ } 
+}
