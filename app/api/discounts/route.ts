@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   try {
-    const {description, image, discountAmount, startDate, endDate, background} = await req.json();
+  const {description, image, discountAmount, startDate, endDate, background} = await req.json();
   const cks = await cookies();
   const token = cks.get("token")?.value;
   const discountData = await axios.post(`${process.env.BACKEND_API}/discounts/`, 

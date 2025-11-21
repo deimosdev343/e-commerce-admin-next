@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import dayjs from 'dayjs';
 import { CldUploadWidget, CloudinaryUploadWidgetInfo } from 'next-cloudinary';
 import Image from 'next/image';
+import axios from 'axios';
 
 interface modalStateType {
   show: boolean | undefined,
@@ -61,7 +62,13 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
           setError("");
         },3000)
       }
-
+      if(modalState.type === "Edit") {
+        // await axios.put(`/api/products`, {product:productToSend})
+      }
+      else if(modalState.type === "Create") {
+        await axios.post(`/api/discounts`, modalState.discount);
+      }
+      setModalState((mdlState: modalStateType) => ({...mdlState, show:false}));
     } catch (err) {
       console.log(err)
     }
