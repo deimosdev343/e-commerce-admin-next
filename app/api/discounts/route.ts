@@ -40,15 +40,18 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
  try {
     const searchParams = req.nextUrl.searchParams;
     const cks = await cookies();
-    const token =  cks.get("token")?.value;
+    const token = cks.get("token")?.value;
     const discountData = await axios.get(
-      `${process.env.BACKEND_API}/products`,
+      `${process.env.BACKEND_API}/discounts`,
       {
         params:{
           startDate: searchParams.get("startDate"),
           endDate: searchParams.get("endDate"),
           limit: 10,
-          description: searchParams.get("description") 
+            description: searchParams.get("description") 
+        },
+        headers:{
+          Authorization: `bearer ${token}`
         }
       }
     );
@@ -58,7 +61,6 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       {status:200}
     );
  } catch (err) {
-    console.log(err);
     return NextResponse.json(
       {msg:"Internal Server Error"}, 
       {status:500}

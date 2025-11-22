@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DiscountHeader from './DiscountHeader'
 import { DiscountType } from '@/types/DiscountType';
 import AddEditDiscountModal from './modals/AddEditDiscountModal';
+import axios from 'axios';
 
 
 interface ParamsObj  {
@@ -33,7 +34,21 @@ const DiscountList = () => {
     discount: null
   });
 
+  const fetchData = async () => {
+    try {
+      const res = await axios.get('/api/discounts');
+      console.log(res);
+      debugger;
+      setDiscounts(res.data);
+    } catch (err) {
+     console.log(err); 
+    }
+  }
 
+  useEffect(() => {
+    fetchData();
+  }, [])
+  console.log(discounts);
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <AddEditDiscountModal modalState={discountAddEditModal} setModalState={setDiscountAddEditModal}/>
