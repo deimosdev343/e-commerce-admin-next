@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import DiscountHeader from './DiscountHeader'
-import { discountType } from '@/types/DiscountType';
+import { DiscountType } from '@/types/DiscountType';
 import AddEditDiscountModal from './modals/AddEditDiscountModal';
 
 
@@ -16,7 +16,7 @@ interface ParamsObj  {
 
 interface discountAddEditModalType  {
     show: boolean | undefined,
-    discount: discountType | null,
+    discount: DiscountType | null,
     type: "Edit" | "Create"
   }
 
@@ -25,7 +25,8 @@ const DiscountList = () => {
     description:"",
     limit: 10
   })
-  
+  const [discounts, setDiscounts] = useState<Array<DiscountType>>([]);
+
   const [discountAddEditModal, setDiscountAddEditModal] = useState<discountAddEditModalType>({
     type: "Create",
     show:false,

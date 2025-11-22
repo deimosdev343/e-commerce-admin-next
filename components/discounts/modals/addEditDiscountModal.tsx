@@ -1,7 +1,7 @@
 "use client"
 import UploadImageIcon from '../../../assets/photo.png';
 
-import { discountType } from '@/types/DiscountType'
+import { DiscountType } from '@/types/DiscountType'
 import { Datepicker, Modal, Textarea, TextInput } from 'flowbite-react'
 import React, { useState } from 'react'
 import dayjs from 'dayjs';
@@ -11,7 +11,7 @@ import axios from 'axios';
 
 interface modalStateType {
   show: boolean | undefined,
-  discount: discountType | null,
+  discount: DiscountType | null,
   type: "Edit" | "Create" 
 }
 

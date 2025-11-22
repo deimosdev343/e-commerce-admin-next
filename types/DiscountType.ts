@@ -1,4 +1,4 @@
-export interface discountType {
+export interface DiscountType {
   _id: string,
   discountId: string, 
   description: string,
