@@ -9,7 +9,9 @@ type DiscountComponentType =  {
 
 const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountComponentType) => {
   return (
-    <div>DiscountComponent</div>
+    <div className='p-5 w-full items-center bg-white rounded-xl border-2 shadow-md'>
+      <p>test</p>
+    </div>
   )
 }
 

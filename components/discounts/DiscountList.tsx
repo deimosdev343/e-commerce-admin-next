@@ -5,6 +5,7 @@ import DiscountHeader from './DiscountHeader'
 import { DiscountType } from '@/types/DiscountType';
 import AddEditDiscountModal from './modals/AddEditDiscountModal';
 import axios from 'axios';
+import DiscountComponent from './DiscountComponent';
 
 
 interface ParamsObj  {
@@ -63,6 +64,9 @@ const DiscountList = () => {
           });
         }}
       />
+      <div className='w-full p-5 items-center flex flex-col '>
+        {discounts.map(discount => <DiscountComponent discount={discount} setEditModal={() => {}} setDeleteModal={() => {}}/>)}
+      </div>
 
     </div>
   )
