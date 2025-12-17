@@ -15,6 +15,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
   return (
     <div className='p-5 w-full items-center bg-white rounded-xl border-2 shadow-md'>
       <div className='w-[33%] flex flex-col h-full justify-center items-center gap-2'>
+        <h2 className='font-bold'>Discount Image:</h2>
         <Image
           alt="discount image"
           title='discount image'
@@ -25,7 +26,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
           className='border-gray-800 border-4 rounded-md'
         />
         <h2 className='font-bold'>Background:</h2>
-        <div className={`h-[10%] w-[360] p-5 ${discount.background} border-gray-800 border-4`}>
+        <div className={`h-[10%] w-[360] p-5 ${discount.background} border-gray-800 border-4 rounded-lg`}>
         </div>
       </div>
     </div>
