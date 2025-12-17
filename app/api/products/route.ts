@@ -95,7 +95,7 @@ export const DELETE = async (req: NextRequest, res: NextResponse) => {
     const searchParams = req.nextUrl.searchParams;
     const cks = await cookies();
     const token =  cks.get("token")?.value;
-
+    
     const id = searchParams.get("id"); 
     await axios.delete(
       `${process.env.BACKEND_API}/products`,
