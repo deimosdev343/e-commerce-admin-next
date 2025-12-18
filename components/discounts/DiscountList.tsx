@@ -38,8 +38,6 @@ const DiscountList = () => {
   const fetchData = async () => {
     try {
       const res = await axios.get('/api/discounts');
-      console.log(res);
-      debugger;
       setDiscounts(res.data);
     } catch (err) {
      console.log(err); 
