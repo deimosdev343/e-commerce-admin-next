@@ -16,7 +16,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
   const endDate = discount.endDate.toLocaleString().split("T")[0]
   const endTime = discount.endDate.toLocaleString().split("T")[1].split(".")[0].split(":").slice(0,2).join(":")
   return (
-    <div className='p-5 flex w-full items-start bg-white rounded-xl border-2 shadow-md'>
+    <div className='p-5 flex h-[400px] w-full items-start bg-white rounded-xl border-2 shadow-md'>
       <div className='w-[33%] flex flex-col h-full justify-center items-center gap-2'>
         <h2 className='font-bold'>Discount Image:</h2>
         <Image
@@ -48,7 +48,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
           </div>
         </div>
       </div>
-      <div className='w-[30%] gap-5 min-h-full flex flex-col p-2 justify-center items-center '>
+      <div className='w-[30%] gap-5 min-h-full  flex flex-col p-2 justify-center items-center '>
         <button 
           className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
             font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
