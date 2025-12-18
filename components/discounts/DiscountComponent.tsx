@@ -26,7 +26,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
           onError={() => {setFallback(true)}}
           width={240}
           height={240}
-          className='border-gray-800 border-4 rounded-md'
+          className='border-gray-800 border-4 rounded-md h-[50%] w-[50%]'
         />
         <h2 className='font-bold'>Background:</h2>
         <div className={`h-[10%] w-[240] p-5 ${discount.background} border-gray-800 border-4 rounded-lg`}>
@@ -47,6 +47,26 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
             <p className='text-md font-bold'>{endDate} - {endTime}</p>
           </div>
         </div>
+      </div>
+      <div className='w-[30%] gap-5 min-h-full flex flex-col p-2 justify-center items-center '>
+        <button 
+          className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
+            font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
+          onClick={() => {
+
+          }}
+        >
+          Edit Item
+        </button>
+        <button 
+          className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
+            font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
+          onClick={() => {
+
+          }}
+        >
+          Delete Item
+        </button>
         
       </div>
     </div>
