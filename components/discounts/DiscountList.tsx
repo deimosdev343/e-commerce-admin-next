@@ -54,8 +54,11 @@ const DiscountList = () => {
   }
 
   useEffect(() => {
-    fetchData();
-  }, [])
+    if(!discountDeleteModalState.show) {
+      fetchData();
+    }
+  }, [discountDeleteModalState.show]);
+  
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <AddEditDiscountModal modalState={discountAddEditModal} setModalState={setDiscountAddEditModal}/>
