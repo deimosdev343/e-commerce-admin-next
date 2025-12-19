@@ -94,3 +94,37 @@ export const DELETE  = async (req: NextRequest, res: NextResponse) => {
     );
   }
 }
+
+export const PUT = async (req: NextRequest, res: NextResponse) => {
+  try {
+    const {discountId, description, image, discountAmount, startDate, endDate, background} = await req.json();
+
+    const cks = await cookies();
+    const token = cks.get("token")?.value;
+    const response = await axios.put(`${process.env.BACKEND_API}/discounts`,
+      {
+        discountId,
+        description,
+        image,
+        discountAmount,
+        startDate,
+        endDate,
+        background
+      },
+      {
+        headers: {
+          Authorization: `bearer ${token}`
+        }
+      }
+    );
+    return NextResponse.json(
+      {msg:"Discount updated successfully"},
+      {status:200}
+    );
+  } catch (err) {
+    return NextResponse.json(
+      {msg:"Internal Server Error"}, 
+      {status:500}
+    );
+  }
+}
