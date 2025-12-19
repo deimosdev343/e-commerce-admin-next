@@ -63,7 +63,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
         },3000)
       }
       if(modalState.type === "Edit") {
-        // await axios.put(`/api/products`, {product:productToSend})
+        await axios.put(`/api/products`, {product:productToSend})
       }
       else if(modalState.type === "Create") {
         await axios.post(`/api/discounts`, modalState.discount);

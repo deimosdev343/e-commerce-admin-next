@@ -53,7 +53,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
           className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
             font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
           onClick={() => {
-
+            setEditModal()
           }}
         >
           Edit Item

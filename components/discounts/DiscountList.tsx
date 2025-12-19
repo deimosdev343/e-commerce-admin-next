@@ -58,7 +58,7 @@ const DiscountList = () => {
       fetchData();
     }
   }, [discountDeleteModalState.show]);
-  
+
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <AddEditDiscountModal modalState={discountAddEditModal} setModalState={setDiscountAddEditModal}/>
@@ -78,7 +78,13 @@ const DiscountList = () => {
         {discounts.map(discount => 
           <DiscountComponent 
             discount={discount} 
-            setEditModal={() => {}} 
+            setEditModal={() => {
+              setDiscountAddEditModal({
+                show: true,
+                discount: discount,
+                type: "Edit"
+              });
+            }} 
             setDeleteModal={(discount: DiscountType) => {
               setDiscountDeleteModalState({show: true, id: discount.discountId});
             }}
