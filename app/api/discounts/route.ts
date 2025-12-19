@@ -67,3 +67,30 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     );
  } 
 }
+
+export const DELETE  = async (req: NextRequest, res: NextResponse) => {
+  try {
+    const searchParams = req.nextUrl.searchParams;
+    const cks = await cookies();
+    const token = cks.get("token")?.value;
+    const response = await axios.delete(`${process.env.BACKEND_API}`, 
+      {
+        params: {
+          discountId: searchParams.get("discountId")
+        },
+        headers: {
+          Authorization: `bearer ${token}`
+        }
+      }
+    );
+    return NextResponse.json(
+      {msg:"Discount Deleted Successfully"},
+      {status:200}
+    );
+  } catch (err) {
+    return NextResponse.json(
+      {msg:"Internal Server Error"}, 
+      {status:500}
+    );
+  }
+}
