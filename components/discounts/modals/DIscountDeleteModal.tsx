@@ -7,7 +7,7 @@ interface modalStateType {
   show: boolean | undefined,
 }
 
-const DIscountDeleteModal = (
+const DiscountDeleteModal = (
   {modalState, setModalState}: 
   {modalState: modalStateType, setModalState: Function}) => {
   
@@ -38,11 +38,24 @@ const DIscountDeleteModal = (
             Delete this Product?
           </p>
         </Modal.Header>
-        <Modal.Body className='bg-white  shadow-xl'>
-          
+        <Modal.Body className='bg-white  shadow-xl flex w-full justify-between p-5'>
+          <button
+              className="bg-white border-2 border-slate-400 hover:bg-gray-100 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
+              onClick={onDelete}
+            >
+              Yes
+            </button>
+            <button
+              className=" bg-white border-2 border-slate-400 hover:bg-gray-100 rounded-lg p-2 w-[45%] text-lg font-bold text-black"
+              onClick={() => {
+                setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
+              }}
+            >
+              No
+            </button>
         </Modal.Body>
       </Modal>
   )
 }
 
-export default DIscountDeleteModal
+export default DiscountDeleteModal

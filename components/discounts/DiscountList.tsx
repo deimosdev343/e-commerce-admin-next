@@ -6,6 +6,7 @@ import { DiscountType } from '@/types/DiscountType';
 import AddEditDiscountModal from './modals/AddEditDiscountModal';
 import axios from 'axios';
 import DiscountComponent from './DiscountComponent';
+import DiscountDeleteModal from './modals/DiscountDeleteModal';
 
 
 interface ParamsObj  {
@@ -23,8 +24,8 @@ interface discountAddEditModalType  {
 }
 
 interface discountDeleteModalType {
-  show: Boolean | undefined,
-  discountId: string | undefined | null
+  show: boolean | undefined,
+  id: string 
 }
 const DiscountList = () => {
   const [searchParams, setSearchParams] = useState<ParamsObj>({
@@ -38,9 +39,9 @@ const DiscountList = () => {
     show:false,
     discount: null
   });
-  const [discountDeleteModal, setDiscountModalDelete] = useState<discountDeleteModalType>({
+  const [discountDeleteModalState, setDiscountDeleteModalState] = useState<discountDeleteModalType>({
     show: false,
-    discountId:""
+    id:""
   });
 
   const fetchData = async () => {
@@ -55,10 +56,10 @@ const DiscountList = () => {
   useEffect(() => {
     fetchData();
   }, [])
-  console.log(discounts);
   return (
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <AddEditDiscountModal modalState={discountAddEditModal} setModalState={setDiscountAddEditModal}/>
+      <DiscountDeleteModal modalState={discountDeleteModalState} setModalState={setDiscountDeleteModalState}/>
       <DiscountHeader
         params={searchParams} 
         setParams={setSearchParams}
@@ -71,9 +72,15 @@ const DiscountList = () => {
         }}
       />
       <div className='w-full p-5 items-center flex flex-col '>
-        {discounts.map(discount => <DiscountComponent discount={discount} setEditModal={() => {}} setDeleteModal={(discount: DiscountType) => {
-          
-        }}/>)}
+        {discounts.map(discount => 
+          <DiscountComponent 
+            discount={discount} 
+            setEditModal={() => {}} 
+            setDeleteModal={(discount: DiscountType) => {
+              setDiscountDeleteModalState({show: true, id: discount.discountId});
+            }}
+          />
+        )}
       </div>
 
     </div>
