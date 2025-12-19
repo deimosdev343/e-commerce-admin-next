@@ -17,11 +17,15 @@ interface ParamsObj  {
 }
 
 interface discountAddEditModalType  {
-    show: boolean | undefined,
-    discount: DiscountType | null,
-    type: "Edit" | "Create"
-  }
+  show: boolean | undefined,
+  discount: DiscountType | null,
+  type: "Edit" | "Create"
+}
 
+interface discountDeleteModalType {
+  show: Boolean | undefined,
+  discountId: string | undefined | null
+}
 const DiscountList = () => {
   const [searchParams, setSearchParams] = useState<ParamsObj>({
     description:"",
@@ -33,6 +37,10 @@ const DiscountList = () => {
     type: "Create",
     show:false,
     discount: null
+  });
+  const [discountDeleteModal, setDiscountModalDelete] = useState<discountDeleteModalType>({
+    show: false,
+    discountId:""
   });
 
   const fetchData = async () => {
@@ -63,7 +71,9 @@ const DiscountList = () => {
         }}
       />
       <div className='w-full p-5 items-center flex flex-col '>
-        {discounts.map(discount => <DiscountComponent discount={discount} setEditModal={() => {}} setDeleteModal={() => {}}/>)}
+        {discounts.map(discount => <DiscountComponent discount={discount} setEditModal={() => {}} setDeleteModal={(discount: DiscountType) => {
+          
+        }}/>)}
       </div>
 
     </div>
