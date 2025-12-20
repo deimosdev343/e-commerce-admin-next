@@ -48,7 +48,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
           startDate: searchParams.get("startDate"),
           endDate: searchParams.get("endDate"),
           limit: 10,
-            description: searchParams.get("description") 
+          description: searchParams.get("description") 
         },
         headers:{
           Authorization: `bearer ${token}`
@@ -97,11 +97,10 @@ export const DELETE  = async (req: NextRequest, res: NextResponse) => {
 
 export const PUT = async (req: NextRequest, res: NextResponse) => {
   try {
-    const {discountId, description, image, discountAmount, startDate, endDate, background} = await req.json();
-
+    const {discountId,description, image, discountAmount, startDate, endDate, background} = await req.json();
     const cks = await cookies();
     const token = cks.get("token")?.value;
-    const response = await axios.put(`${process.env.BACKEND_API}/discounts`,
+    await axios.put(`${process.env.BACKEND_API}/discounts`,
       {
         discountId,
         description,
@@ -122,6 +121,7 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
       {status:200}
     );
   } catch (err) {
+    console.log(err);
     return NextResponse.json(
       {msg:"Internal Server Error"}, 
       {status:500}

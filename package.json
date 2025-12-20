@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3020 --turbopack",
+    "debug":"next dev -p 3020 --turbopack --inspect",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -15,7 +16,7 @@
     "@mui/x-charts": "^8.10.0",
     "@next/env": "^15.1.7",
     "@reduxjs/toolkit": "^2.5.1",
-    "axios": "^1.7.9",
+    "axios": "^1.13.2",
     "cloudinary": "^2.6.0",
     "dayjs": "^1.11.19",
     "eslint-config-next": "^16.0.10",
