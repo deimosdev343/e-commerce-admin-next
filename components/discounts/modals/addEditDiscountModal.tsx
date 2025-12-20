@@ -109,7 +109,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
               Start Date
             </p>
             <Datepicker
-              value={modalState.discount?.startDate}
+              value={dayjs(modalState.discount?.startDate).toDate()}
               onChange={(date: Date | null) => {
                 setModalState((mdlState: modalStateType) => ({...mdlState,discount: {...mdlState.discount, startDate: date}}))
               }}
@@ -120,7 +120,7 @@ const AddEditDiscountModal = ({modalState, setModalState}:{
               End Date 
             </p>
             <Datepicker
-              value={modalState.discount?.endDate}
+              value={dayjs(modalState.discount?.endDate).toDate()}
               onChange={(date: Date | null) => {
                 setModalState((mdlState: modalStateType) => ({...mdlState,discount: {...mdlState.discount, endDate: date}}))
               }}

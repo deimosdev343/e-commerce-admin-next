@@ -74,7 +74,7 @@ const DiscountList = () => {
           });
         }}
       />
-      <div className='w-full p-5 items-center flex flex-col '>
+      <div className='w-full p-5 items-center flex flex-col gap-5'>
         {discounts.map(discount => 
           <DiscountComponent 
             discount={discount} 
