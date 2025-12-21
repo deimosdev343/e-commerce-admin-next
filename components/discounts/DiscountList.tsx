@@ -74,7 +74,7 @@ const DiscountList = () => {
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <AddEditDiscountModal modalState={discountAddEditModal} setModalState={setDiscountAddEditModal}/>
       <DiscountDeleteModal modalState={discountDeleteModalState} setModalState={setDiscountDeleteModalState}/>
-      <DiscountItemsModal  modalState={discountItemModalState} setModalState={setDiscountDeleteModalState}/>
+      <DiscountItemsModal  modalState={discountItemModalState} setModalState={setDiscountModalState}/>
       <DiscountHeader
         params={searchParams} 
         setParams={setSearchParams}
