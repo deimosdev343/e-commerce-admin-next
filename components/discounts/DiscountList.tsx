@@ -7,6 +7,7 @@ import AddEditDiscountModal from './modals/AddEditDiscountModal';
 import axios from 'axios';
 import DiscountComponent from './DiscountComponent';
 import DiscountDeleteModal from './modals/DiscountDeleteModal';
+import DiscountItemsModal from './modals/DiscountItemsModal';
 
 
 interface ParamsObj  {
@@ -27,6 +28,12 @@ interface discountDeleteModalType {
   show: boolean | undefined,
   id: string 
 }
+
+interface discountItemModalType {
+  show: boolean | undefined,
+  discount: DiscountType | null
+}
+
 const DiscountList = () => {
   const [searchParams, setSearchParams] = useState<ParamsObj>({
     description:"",
@@ -43,6 +50,10 @@ const DiscountList = () => {
     show: false,
     id:""
   });
+  const [discountItemModalState, setDiscountModalState] = useState<discountItemModalType>({
+    show:false,
+    discount: null
+  })
 
   const fetchData = async () => {
     try {
@@ -63,6 +74,7 @@ const DiscountList = () => {
     <div className='w-full max-h-full flex flex-col items-center gap-2 p-2 overflow-scroll'>
       <AddEditDiscountModal modalState={discountAddEditModal} setModalState={setDiscountAddEditModal}/>
       <DiscountDeleteModal modalState={discountDeleteModalState} setModalState={setDiscountDeleteModalState}/>
+      <DiscountItemsModal  modalState={discountItemModalState} setModalState={setDiscountDeleteModalState}/>
       <DiscountHeader
         params={searchParams} 
         setParams={setSearchParams}
@@ -87,6 +99,9 @@ const DiscountList = () => {
             }} 
             setDeleteModal={(discount: DiscountType) => {
               setDiscountDeleteModalState({show: true, id: discount.discountId});
+            }}
+            setItemModal={() => {
+              setDiscountModalState({show: true, discount: discount})
             }}
           />
         )}

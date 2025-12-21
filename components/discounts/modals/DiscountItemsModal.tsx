@@ -11,13 +11,16 @@ const DiscountItemsModal = ({modalState, setModalState}:{
     modalState: modalStateType,
     setModalState: Function
 }) => {
-
+  console.log(modalState)
   return (
     <Modal
       show={modalState.show}
       className='bg-black'
       onClose={() => {
-        setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
+        setModalState((mdlstate: modalStateType) =>  {
+          console.log(mdlstate)
+          return ({...mdlstate, show: false})
+        });
       }}
     >
       <Modal.Header

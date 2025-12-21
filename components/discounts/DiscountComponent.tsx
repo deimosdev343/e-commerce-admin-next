@@ -6,10 +6,11 @@ import PictureLogo from '../../assets/ImageLogo.png'
 type DiscountComponentType =  {
   discount: DiscountType,
   setEditModal: Function,
-  setDeleteModal: Function
+  setDeleteModal: Function,
+  setItemModal: Function
 }
 
-const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountComponentType) => {
+const DiscountComponent = ({discount, setEditModal, setDeleteModal, setItemModal} : DiscountComponentType) => {
   const [fallback, setFallback] = useState<boolean>(false);
   const startDate = discount.startDate.toLocaleString().split("T")[0]
   const startTime = discount.startDate.toLocaleString().split("T")[1].split(".")[0].split(":").slice(0,2).join(":")
@@ -56,7 +57,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
             setEditModal()
           }}
         >
-          Edit Item
+          Edit Discount
         </button>
         <button 
           className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
@@ -65,7 +66,16 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal} : DiscountCo
             setDeleteModal(discount)
           }}
         >
-          Delete Item
+          Delete Discount
+        </button>
+        <button 
+          className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
+            font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
+          onClick={() => {
+            setItemModal()
+          }}
+        >
+          Show Items
         </button>
         
       </div>
