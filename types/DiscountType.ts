@@ -7,5 +7,6 @@ export interface DiscountType {
   startDate: Date,
   endDate: Date
   background: string
+  productIds?: string[]
 
 }
