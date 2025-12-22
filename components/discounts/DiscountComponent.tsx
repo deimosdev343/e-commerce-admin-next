@@ -5,9 +5,9 @@ import PictureLogo from '../../assets/ImageLogo.png'
 
 type DiscountComponentType =  {
   discount: DiscountType,
-  setEditModal: Function,
-  setDeleteModal: Function,
-  setItemModal: Function
+  setEditModal?: Function,
+  setDeleteModal?: Function,
+  setItemModal?: Function
 }
 
 const DiscountComponent = ({discount, setEditModal, setDeleteModal, setItemModal} : DiscountComponentType) => {
@@ -50,7 +50,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal, setItemModal
         </div>
       </div>
       <div className='w-[30%] gap-5 min-h-full  flex flex-col p-2 justify-center items-center '>
-        <button 
+        {setEditModal && <button 
           className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
             font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
           onClick={() => {
@@ -58,8 +58,8 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal, setItemModal
           }}
         >
           Edit Discount
-        </button>
-        <button 
+        </button>}
+        {setDeleteModal && <button 
           className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
             font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
           onClick={() => {
@@ -67,8 +67,8 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal, setItemModal
           }}
         >
           Delete Discount
-        </button>
-        <button 
+        </button>}
+        {setItemModal && <button 
           className='w-[60%]  bg-white  p-2 rounded-lg border-2 border-slate-400
             font-bold text-2xl shadow-lg hover:bg-slate-100 text-black'
           onClick={() => {
@@ -76,7 +76,7 @@ const DiscountComponent = ({discount, setEditModal, setDeleteModal, setItemModal
           }}
         >
           Show Items
-        </button>
+        </button>}
         
       </div>
     </div>

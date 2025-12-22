@@ -1,0 +1,64 @@
+import { DiscountType } from '@/types/DiscountType';
+import { ProductType } from '@/types/ProductType';
+import axios from 'axios';
+import { Modal } from 'flowbite-react';
+import React, { useEffect, useState } from 'react'
+import DiscountComponent from '../DiscountComponent';
+
+
+
+interface modalStateType {
+  show: boolean | undefined,
+  product: ProductType | null,
+}
+
+const AddItemToDiscountsModal = ({modalState, setModalState}:{
+    modalState: modalStateType,
+    setModalState: Function
+}) => {
+  const fetchData = async () => {
+    try {
+      const res = await axios.get('/api/discounts');
+      setDiscounts(res.data);
+    } catch (err) {
+     console.log(err); 
+    }
+  }
+
+  const [discounts, setDiscounts] = useState<Array<DiscountType>>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <Modal
+      show={modalState.show}
+      className='bg-black'
+      onClose={() => {
+        setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
+      }}
+    >
+      <Modal.Header
+        className='bg-gray-100 border-b-0 shadow-xl'  
+      >
+        <p className='text-3xl font-bold text-black '>
+          Add Item to Discount
+        </p>
+      </Modal.Header>
+      <Modal.Body className='bg-gray-100  shadow-xl min-h-[80vh]'>
+        <div className='w-full flex-col flex items-center p-5 '>
+          {discounts.map(ds => 
+            <div className='w-full' onClick={() => {}}>
+              <DiscountComponent 
+                discount={ds} 
+              />
+            </div>
+            )}
+        </div>
+      </Modal.Body>
+    </Modal>
+  )
+}
+
+export default AddItemToDiscountsModal
