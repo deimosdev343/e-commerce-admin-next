@@ -8,6 +8,7 @@ import TopBarProductList from './products/TopBarProductList'
 import EditProduct from './products/modals/EditProduct'
 import DeleteProduct from './products/modals/DeleteProduct'
 import FeatureProduct from './products/modals/FeatureProduct'
+import AddItemToDiscountsModal from './discounts/modals/AddItemToDiscountsModal'
 
 const ProductList = () => {
   const [productParams, setProductParams] = useState({
@@ -45,6 +46,13 @@ const ProductList = () => {
     featured: false
   });
   
+  const [productAddDiscountModalState, setProductAddDiscountModalState] = useState<{
+    show: boolean | undefined,
+    product: ProductType | null
+  }>({
+    show: false,
+    product: null,
+  })
   const createItemFunc = async () => {
     setProductParams(prms =>  ({
       ...prms,
@@ -98,6 +106,7 @@ const ProductList = () => {
       <DeleteProduct modalState={productDeleteModal} setModalState={setProductDeleteModal}/>
       <EditProduct modalState={productEditModal} setModalState={setProductEditmodal}/>
       <FeatureProduct modalState={productFeatureModal} setModalState={setProductFeatureModal}/>
+      <AddItemToDiscountsModal modalState={productAddDiscountModalState} setModalState={setProductAddDiscountModalState}/>
       <TopBarProductList params={productParams} setParams={setProductParams} createItemFunc={createItemFunc}/>
       {products.map(prd => <ProductBox 
         key={prd._id}
@@ -105,6 +114,7 @@ const ProductList = () => {
         setEditModal={setProductEditmodal} 
         setDeleteModal={setProductDeleteModal}
         setProductFeatureModal={setProductFeatureModal}
+        setProductAddDiscountModal={setProductAddDiscountModalState}
       />)} 
     </div>
   )
