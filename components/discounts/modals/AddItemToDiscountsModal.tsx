@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Modal } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import DiscountComponent from '../DiscountComponent';
+import ModalDiscountComponent from '../ModalDiscountComponent';
 
 
 
@@ -47,10 +48,10 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
         </p>
       </Modal.Header>
       <Modal.Body className='bg-gray-100  shadow-xl min-h-[80vh]'>
-        <div className='w-full flex-col flex items-center p-5 '>
+        <div className='w-full flex-col flex items-center gap-5 p-5 '>
           {discounts.map(ds => 
             <div className='w-full' onClick={() => {}}>
-              <DiscountComponent 
+              <ModalDiscountComponent
                 discount={ds} 
               />
             </div>
