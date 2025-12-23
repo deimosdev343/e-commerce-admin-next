@@ -28,6 +28,17 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
 
   const [discounts, setDiscounts] = useState<Array<DiscountType>>([]);
 
+  const addItemToDiscount = async (prodId:string, discountId:string) => {
+    try {
+      const res = await axios.put('/api/discount/addToDiscount', {
+        prodId,
+        discountId
+      });
+      setModalState({show:false, product: null});
+    } catch (err) {
+      console.log(err);
+    }
+  }
   useEffect(() => {
     fetchData();
   }, []);
@@ -50,7 +61,9 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
       <Modal.Body className='bg-gray-100  shadow-xl min-h-[80vh]'>
         <div className='w-full flex-col flex items-center gap-5 p-5 '>
           {discounts.map(ds => 
-            <div className='w-full' onClick={() => {}}>
+            <div className='w-full' onClick={() => {
+              addItemToDiscount(modalState.product!._id, ds.discountId)
+            }}>
               <ModalDiscountComponent
                 discount={ds} 
               />
