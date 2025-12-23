@@ -19,8 +19,17 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
 }) => {
   const fetchData = async () => {
     try {
+     
       const res = await axios.get('/api/discounts');
-      setDiscounts(res.data);
+      const resDiscounts = res.data.filter((ds: DiscountType) =>  {
+       
+        if(modalState?.product?.discountIds) {
+         
+          modalState?.product?.discountIds?.findIndex((did: string) => did == ds.discountId) <= -1
+        }
+        return false;
+      });
+      setDiscounts(resDiscounts);
     } catch (err) {
      console.log(err); 
     }
@@ -42,7 +51,7 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
   }
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [modalState?.product]);
 
   return (
     <Modal

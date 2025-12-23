@@ -8,7 +8,8 @@ export interface ProductType {
   image: string,
   name: string,
   price: number,
-  sizes: Array<string>
+  sizes: Array<string>,
+  discountIds: Array<string>,
   updatedAt?: string,
   featured?: boolean
 }
