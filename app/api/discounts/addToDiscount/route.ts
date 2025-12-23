@@ -6,8 +6,8 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
   try {
     const {discountId, prodId} = await req.json();
     const cks = await cookies();
-    const token = cks.get("token");
-    const discountData = await axios.post(`${process.env.BACKEND_API}/discounts/addToDiscount`, 
+    const token = cks.get("token")?.value;
+    const discountData = await axios.put(`${process.env.BACKEND_API}/discounts/items/`, 
       {
         discountId,
         prodId

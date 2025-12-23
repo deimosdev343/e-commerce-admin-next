@@ -30,12 +30,13 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
 
   const addItemToDiscount = async (prodId:string, discountId:string) => {
     try {
-      const res = await axios.put('/api/discount/addToDiscount', {
+      const res = await axios.put('/api/discounts/addToDiscount', {
         prodId,
         discountId
       });
       setModalState({show:false, product: null});
     } catch (err) {
+      
       console.log(err);
     }
   }
@@ -59,7 +60,7 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
         </p>
       </Modal.Header>
       <Modal.Body className='bg-gray-100  shadow-xl min-h-[80vh]'>
-        <div className='w-full flex-col flex items-center gap-5 p-5 '>
+        <div className='w-full flex-col flex items-center gap-5 p-5  cursor-pointer'>
           {discounts.map(ds => 
             <div className='w-full' onClick={() => {
               addItemToDiscount(modalState.product!._id, ds.discountId)
