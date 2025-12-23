@@ -25,7 +25,7 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
        
         if(modalState?.product?.discountIds) {
          
-          modalState?.product?.discountIds?.findIndex((did: string) => did == ds.discountId) <= -1
+          return modalState?.product?.discountIds?.findIndex((did: string) => did == ds.discountId) <= -1
         }
         return false;
       });
