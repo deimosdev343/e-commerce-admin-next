@@ -21,13 +21,8 @@ const AddItemToDiscountsModal = ({modalState, setModalState}:{
     try {
      
       const res = await axios.get('/api/discounts');
-      const resDiscounts = res.data.filter((ds: DiscountType) =>  {
-       
-        if(modalState?.product?.discountIds) {
-         
-          return modalState?.product?.discountIds?.findIndex((did: string) => did == ds.discountId) <= -1
-        }
-        return false;
+      const resDiscounts = res.data.filter((ds: DiscountType) =>  { 
+        return modalState?.product?.discountId == ds.discountId
       });
       setDiscounts(resDiscounts);
     } catch (err) {

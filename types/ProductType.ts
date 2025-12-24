@@ -9,7 +9,7 @@ export interface ProductType {
   name: string,
   price: number,
   sizes: Array<string>,
-  discountIds: Array<string>,
+  discountId: string,
   updatedAt?: string,
   featured?: boolean
 }
