@@ -11,13 +11,15 @@ const ProductBox = ({
   setEditModal,
   setDeleteModal,
   setProductFeatureModal,
-  setProductAddDiscountModal
+  setProductAddDiscountModal,
+  setProductDiscountModal
 } : {
   product: ProductType, 
   setEditModal: Function,
   setDeleteModal: Function
   setProductFeatureModal: Function,
   setProductAddDiscountModal: Function
+  setProductDiscountModal: Function
 }) => {
   const [fallback, setFallback] = useState<boolean>(false);
   return (
@@ -104,7 +106,7 @@ const ProductBox = ({
           >
           Feature Item
        </button>
-       <button 
+       {!product.discountId && <button 
           className='
             w-[60%] border-2 border-slate-400 bg-white p-2 
             rounded-lg font-bold text-2xl shadow-lg
@@ -117,8 +119,21 @@ const ProductBox = ({
           }}
           >
           Add Discount
-       </button>
-       
+       </button>}
+       {product.discountId && <button 
+          className='
+            w-[60%] border-2 border-slate-400 bg-white p-2 
+            rounded-lg font-bold text-2xl shadow-lg
+          text-black hover:bg-s late-100'
+          onClick={() => {
+            setProductDiscountModal({
+              show: true,
+              product: product
+            });
+          }}
+          >
+          View Current Discount
+       </button>}
       </div>
     </div>
   )

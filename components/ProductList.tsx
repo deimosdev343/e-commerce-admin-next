@@ -28,6 +28,14 @@ const ProductList = () => {
     type:"Create"
   });
 
+  const [productDiscountModal, setProductDiscountModal] = useState<{
+    show: boolean | undefined,
+    product: ProductType | null
+  }>({
+    show: false,
+    product: null
+  });
+
   const [productDeleteModal, setProductDeleteModal] = useState<{
     show: boolean | undefined,
     id:string
@@ -73,6 +81,7 @@ const ProductList = () => {
         colors:[],
         image: "",
         price: 0,
+        discountId:""
       },
       type:"Create"
     })
@@ -115,6 +124,7 @@ const ProductList = () => {
         setDeleteModal={setProductDeleteModal}
         setProductFeatureModal={setProductFeatureModal}
         setProductAddDiscountModal={setProductAddDiscountModalState}
+        setProductDiscountModal={setProductDiscountModal}
       />)} 
     </div>
   )
