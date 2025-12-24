@@ -1,7 +1,11 @@
 import { DiscountType } from '@/types/DiscountType'
 import { ProductType } from '@/types/ProductType'
+import axios from 'axios'
 import { Modal } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
+import DiscountComponent from '../DiscountComponent'
+import Image from 'next/image'
+import PictureLogo from '../../../assets/ImageLogo.png'
 
 
 interface modalStateType {
@@ -16,22 +20,25 @@ const ProductDiscountModal = ({modalState, setModalState}: {modalState: modalSta
 
   const fetchData = async () => {
     try {
-
+      const discountRes = await axios.get(`/api/discounts/getDiscount`,{params: {discountId: modalState.product!.discountId}});
+      setDiscount(discountRes.data.discount);
     } catch (err) {
       console.log(err)
     }
   }
 
   useEffect(() => {
-    
-  }, [modalState.product?.discountId])
-
+    if(modalState.product?.discountId) {
+      fetchData();
+    }
+  }, [modalState.show])
+  const [fallback, setFallback] = useState(false);
   return (
     <Modal
       show={modalState.show}
       className='bg-black'
       onClose={() => {
-        setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false}));
+        setModalState((mdlstate: modalStateType) =>  ({...mdlstate, show: false, product: null}));
       }}
     >
       <Modal.Header
@@ -43,6 +50,18 @@ const ProductDiscountModal = ({modalState, setModalState}: {modalState: modalSta
       </Modal.Header>
       <Modal.Body>
 
+        {discount && <div className='w-full flex items-center gap-5 p-2 border-2 border-slate-200 shadow-md'>
+          <Image
+            alt="discount image"
+            title='discount image'
+            src={fallback ? PictureLogo : discount.image}
+            onError={() => {setFallback(true)}}
+            width={120}
+            height={120}
+            className='border-gray-800 border-4 rounded-md h-[25%] w-[25%]'
+          />
+          <p className='text-md font-bold'>{discount.description}</p>
+        </div>}
       </Modal.Body>
     </Modal>
   )

@@ -13,7 +13,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       }
     );
     return NextResponse.json(
-      {discount: discountRes.data},
+      discountRes.data,
       {status:200}
     );
   } catch (err) {
