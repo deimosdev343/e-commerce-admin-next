@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 
 
-export const GET = async (req: NextRequest, res: NextResponse) => {
+export const GET = async (req: NextRequest) => {
   try {
     const cks = await cookies();
     const token =  cks.get("token")?.value;

@@ -2,7 +2,7 @@ import axios from "axios";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (req: NextRequest, res: NextResponse) => {
+export const POST = async (req: NextRequest) => {
   try {
   const {description, image, discountAmount, startDate, endDate, background} = await req.json();
   const cks = await cookies();
@@ -36,7 +36,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   }
 }
 
-export const GET = async (req: NextRequest, res: NextResponse) => {
+export const GET = async (req: NextRequest) => {
  try {
     const searchParams = req.nextUrl.searchParams;
     const cks = await cookies();
@@ -68,7 +68,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
  } 
 }
 
-export const DELETE  = async (req: NextRequest, res: NextResponse) => {
+export const DELETE  = async (req: NextRequest) => {
   try {
     const searchParams = req.nextUrl.searchParams;
     const cks = await cookies();
@@ -95,7 +95,7 @@ export const DELETE  = async (req: NextRequest, res: NextResponse) => {
   }
 }
 
-export const PUT = async (req: NextRequest, res: NextResponse) => {
+export const PUT = async (req: NextRequest) => {
   try {
     const {discountId,description, image, discountAmount, startDate, endDate, background} = await req.json();
     const cks = await cookies();

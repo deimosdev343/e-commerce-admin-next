@@ -2,7 +2,7 @@ import axios from "axios";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export const PUT = async (req: NextRequest, res: NextResponse) => {
+export const PUT = async (req: NextRequest) => {
   try {
     const {discountId, prodId} = await req.json();
     const cks = await cookies();

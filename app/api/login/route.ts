@@ -1,9 +1,8 @@
 import axios from "axios";
-import { NextApiRequest, NextApiResponse } from "next";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (req: Request, res: NextApiResponse) => {
+export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json()
     const backendRes = await axios.post(

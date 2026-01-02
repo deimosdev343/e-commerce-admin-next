@@ -1,8 +1,8 @@
 import axios from "axios";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: Request, res: NextResponse) => {
+export const GET = async (req: NextRequest) => {
   const token = req.headers.get("token");
 
   try {
