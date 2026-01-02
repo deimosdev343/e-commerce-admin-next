@@ -49,7 +49,7 @@ const ProductBox = ({
             Colors 
           </h2>
           
-          <div className='grid grid-cols-5 gap-5  items-center bg-white p-2 shadow-xl rounded-md border-2 border-slate-400 '>
+          <div className='grid grid-cols-8 gap-5  items-center bg-white p-2 shadow-xl rounded-md border-2 border-slate-400 w-full '>
             {product.colors.map(clr => <div
               key={clr}
               className='flex flex-row p-3 rounded-xl shadow-lg border-white '
@@ -109,7 +109,7 @@ const ProductBox = ({
             });
           }}
           >
-          Feature Item
+          {product.featured ? "Unfeature Item":"Feature Item"}
        </button>
        {!product.discountId && <button 
           className='
