@@ -31,7 +31,7 @@ const ProductBox = ({
           onError={() => {setFallback(true)}}
           width={360}
           height={360}
-          className='border-gray-300 border-4'
+          className='border-gray-300 border-4 rounded-md'
         />
         <h2 className='text-black font-bold text-lg'>
           ID: {product._id}
@@ -60,11 +60,16 @@ const ProductBox = ({
 
           
         </div>
-        <div className='w-full flex items-center gap-2'>     
-          <h2 className='text-black font-extrabold text-2xl'> sizes: [</h2>
-          {product.sizes.map(sz => <h2 key={sz} className='text-2xl font-bold text-black'>{sz}</h2>)}
+        <div className='w-full flex flex-col items-start gap-2'>     
+          <h2 className='text-black font-bold text-3xl mb-2'> sizes</h2>
+          <div className='grid grid-cols-5 gap-2 items-center bg-white p-2 shadow-xl rounded-md border-2 border-slate-400'>
+            {product.sizes.map(sz => <div className='flex w-full  border-2 rounded-xl p-1'>
+              <h2 key={sz} className='text-lg font-bold text-black'>{sz}</h2>
+            </div>)}
 
-          <h2 className='text-black font-extrabold text-2xl'> ]</h2>
+          </div>
+
+          
         </div> 
       </div>
       <div className='w-[33%] gap-5 h-full flex flex-col justify-center items-center '>
