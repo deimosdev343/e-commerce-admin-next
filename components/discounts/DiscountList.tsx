@@ -88,7 +88,8 @@ const DiscountList = () => {
       />
       <div className='w-full p-5 items-center flex flex-col gap-5'>
         {discounts.map(discount => 
-          <DiscountComponent 
+          <DiscountComponent
+            key={discount._id} 
             discount={discount} 
             setEditModal={() => {
               setDiscountAddEditModal({
