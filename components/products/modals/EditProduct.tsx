@@ -198,7 +198,7 @@ const EditProduct = ({modalState, setModalState} :{
         return {...mdlState,product: prod };
       })
     }
-    setColorPicker({show:false, color:""});
+  
   }
   const onAddRemoveSize = (size: string) => {
     setModalState( (mdlstate: modalStateType) => {
@@ -405,7 +405,7 @@ const EditProduct = ({modalState, setModalState} :{
         
         {colorPicker.show && 
           <div className="w-full flex flex-row justify-between
-            items-center gap-5 p-5  bg-slate-800 rounded-xl"
+            items-center gap-5 p-5 border-2 border-slate-300 rounded-xl"
           >
             <CirclePicker  
               colors={ColorPickerColors}  
@@ -413,7 +413,7 @@ const EditProduct = ({modalState, setModalState} :{
             />
             <button
               onClick={onAddColor} 
-              className="p-2 bg-slate-700 text-black rounded-lg shadow-lg hover:bg-slate-600 transition-all"
+              className="p-2 bg-slate-400 text-white font-bold rounded-lg shadow-lg hover:bg-slate-500 transition-all"
             >
               Add Color
             </button> 
