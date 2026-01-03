@@ -131,7 +131,9 @@ const ProductList = () => {
       <AddItemToDiscountsModal modalState={productAddDiscountModalState} setModalState={setProductAddDiscountModalState}/>
       <ProductDiscountModal modalState={productDiscountModalState} setModalState={setProductDiscountModalState}/>
       <TopBarProductList params={productParams} setParams={setProductParams} createItemFunc={createItemFunc}/>
-      {products.map(prd => <ProductBox 
+      {products.map((prd:ProductType) => {
+        console.log(prd._id)
+        return <ProductBox 
         key={prd._id}
         product={prd} 
         setEditModal={setProductEditmodal} 
@@ -139,7 +141,7 @@ const ProductList = () => {
         setProductFeatureModal={setProductFeatureModal}
         setProductAddDiscountModal={setProductAddDiscountModalState}
         setProductDiscountModal={setProductDiscountModalState}
-      />)} 
+      />})} 
     </div>
   )
 }
