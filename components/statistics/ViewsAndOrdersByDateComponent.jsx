@@ -34,7 +34,7 @@ const ViewsAndOrdersByDateComponent = () => {
   return (
     <div className="w-full h-full p-5 flex flex-col items-center justify-center shadow-xl bg-white rounded-lg border-2">
       <h2 className="text-xl text-white font-bold">Order and View Count</h2>
-      <div className="w-full min-h-[80%] flex flex-col">
+      <div className="w-full min-h-[90%] flex flex-col">
         <LineChart
           
           dataset={viewsAndOrdersData}
