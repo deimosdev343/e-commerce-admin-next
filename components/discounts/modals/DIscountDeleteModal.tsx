@@ -35,7 +35,7 @@ const DiscountDeleteModal = (
           className='bg-white border-b-0 shadow-xl'
         >
           <p className='text-3xl font-bold text-black '>
-            Delete this Product?
+            Delete this Discount?
           </p>
         </Modal.Header>
         <Modal.Body className='bg-white  shadow-xl flex w-full justify-between p-5'>
